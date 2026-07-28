@@ -30,7 +30,7 @@ def create_default_users():
             admin = User(
                 username='Adminpro',
                 email='admin@whatsapp-ui.com',
-                password='',
+                password='Admin@meta123',
                 role='admin',
                 first_name='System',
                 last_name='Administrator',
