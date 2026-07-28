@@ -93,6 +93,11 @@
                         <span class="summary-value" id="totalPhonesCount">0</span>
                         <p class="summary-description">Phone numbers collected</p>
                     </div>
+                    <div class="summary-action">
+                        <button class="btn btn-sm btn-primary" onclick="downloadAllPhoneNumbers()" title="Download All Phone Numbers">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -106,7 +111,7 @@
                         </div>
                         <div class="card-actions">
                             <button id="downloadAllPhonesBtn" class="btn btn-primary" onclick="downloadAllPhoneNumbers()">
-                                <i class="fas fa-download"></i>  All Numbers Excel
+                                <i class="fas fa-download"></i> Download All Phone Numbers
                             </button>
                             <button id="downloadGroupsListBtn" class="btn btn-success" onclick="downloadGroupsList()">
                                 <i class="fas fa-download"></i> Groups List csv

@@ -542,11 +542,19 @@ function downloadAllPhoneNumbers() {
             return;
         }
         
-        // Show loading state
-        const downloadBtn = document.getElementById('downloadAllPhonesBtn');
-        const originalText = downloadBtn.innerHTML;
-        downloadBtn.disabled = true;
-        downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        // Get total phone count for better user feedback
+        const totalPhones = document.getElementById('totalPhonesCount').textContent || '0';
+        const phoneCount = totalPhones.replace(/,/g, '');
+        
+        // Show loading state for all download buttons
+        const downloadBtns = document.querySelectorAll('[onclick="downloadAllPhoneNumbers()"]');
+        const originalTexts = [];
+        
+        downloadBtns.forEach((btn, index) => {
+            originalTexts[index] = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        });
         
         // Create download URL
         const downloadUrl = `/api/download-all-phone-numbers?assembly=${encodeURIComponent(selectedAssembly)}`;
@@ -564,24 +572,26 @@ function downloadAllPhoneNumbers() {
         document.body.removeChild(link);
         
         console.log('Download initiated for all phone numbers');
-        showSuccess(`Download started for all phone numbers from ${selectedAssembly}!`);
+        showSuccess(`📱 Download started! Processing ${phoneCount} phone numbers from ${selectedAssembly}...`);
         
-        // Restore button state
+        // Restore button states
         setTimeout(() => {
-            downloadBtn.disabled = false;
-            downloadBtn.innerHTML = originalText;
-        }, 2000);
+            downloadBtns.forEach((btn, index) => {
+                btn.disabled = false;
+                btn.innerHTML = originalTexts[index];
+            });
+        }, 3000);
         
     } catch (error) {
         console.error('Error downloading all phone numbers:', error);
         showError('Error downloading all phone numbers: ' + error.message);
         
-        // Restore button state
-        const downloadBtn = document.getElementById('downloadAllPhonesBtn');
-        if (downloadBtn) {
-            downloadBtn.disabled = false;
-            downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download All Phone Numbers';
-        }
+        // Restore button states
+        const downloadBtns = document.querySelectorAll('[onclick="downloadAllPhoneNumbers()"]');
+        downloadBtns.forEach(btn => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-download"></i> Download All Phone Numbers';
+        });
     }
 }
 

@@ -1,0 +1,47 @@
+[
+    {
+        "id": "AC32EA09F7FA2F096BB7812E7C4448CE",
+        "sender": {
+            "name": "sarpanchs945",
+            "phoneNumber": "+91 93082 00009"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:25:14 AM",
+        "group_name": "INDIAN_NEWS_1779256541854",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:40.703592",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC3E4C0B3584211B18A796AB4146F31A",
+        "sender": {
+            "name": "sandeepvirdi2525",
+            "phoneNumber": "+91 98762 26010"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:25:14 AM",
+        "group_name": "INDIAN_NEWS_1779256541854",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:40.742114",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACE38576C38746C4946E0A350F26963D",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:25:14 AM",
+        "group_name": "INDIAN_NEWS_1779256541854",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:40.779079",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    }
+]

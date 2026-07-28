@@ -1,0 +1,1427 @@
+[
+    {
+        "id": "AC2FD11AFE9F13D86DCDA9959918BCD1",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "6:32 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.461263",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC76341A4A3D23B90523C12FA3AA4D22",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "6:32 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.505442",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "4AFC4D03C18C91EC73F0",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "9:16 am",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.549063",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AEA7B8969A9D5D6FC17",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Hun thik hai laddi9:16 am",
+        "messageType": "text",
+        "timestamp": "",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.589246",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AF63AF4E3EBCA1DF219",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:02 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.626845",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A041C472FF34F022035",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Bhullar Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:02 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.662818",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A9EABF1527F13759AFD",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy birthday Jaspal Paji 9:15 am",
+        "messageType": "text",
+        "timestamp": "9:15 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.701332",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3A32131045A6279D1DD0",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy birthday  jaspal singh ji9:18 am",
+        "messageType": "text",
+        "timestamp": "",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.740386",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "ACA635DDDA92FD1F2CEF20BB3F4273D7",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy Birthday  jaspal paji9:23 am",
+        "messageType": "text",
+        "timestamp": "9:23 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.783827",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3A3A0194D9368F902432",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy birthday to u Jaspal Bhaji ! I hope your day is filled with lots of love and laughter! May all of your birthday wishes come true.9:32 am",
+        "messageType": "text",
+        "timestamp": "9:32 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.836550",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3AD31710FC139E01BDE6",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "You are invited for a cup of tea today at 12 noon at Friends Air Conditioners, SCF 115, 2nd Floor.9:34 am",
+        "messageType": "text",
+        "timestamp": "9:34 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.877299",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A0FD8A55CCFA3CE3782",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "urban estate ph 19:34 am",
+        "messageType": "text",
+        "timestamp": "9:34 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.909707",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A2D4375ACCB4D0FD961",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy Birthday, Jaspal Bhaji! \nWishing you a wonderful year ahead filled with happiness, good health, and success.\nMay Waheguru bless you always 9:42 am",
+        "messageType": "text",
+        "timestamp": "9:42 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.950260",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3A3BD2B8624CE49D1B0F",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Wht do u mean a cup of tea Kyon bhullar saab a glass of peg is better than a cup of tea9:45 am",
+        "messageType": "text",
+        "timestamp": "",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:08.988984",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3A85E595056920D53357",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "+91 99154 44483"
+        },
+        "messageContent": "Jaspal AcYou are invited for a cup of tea today at 12 noon at Friends Air Conditioners, SCF 115, 2nd Floor.Happy birthday bhaji9:50 am",
+        "messageType": "text",
+        "timestamp": "9:50 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.032840",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "2A3A1B7F881D47202A92",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy birthday Jaspal Bhaji10:38 am",
+        "messageType": "text",
+        "timestamp": "10:38 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.075372",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3AACE40758A70B3A5E78",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy Birthday Bhaji 10:40 am",
+        "messageType": "text",
+        "timestamp": "10:40 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.117837",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3A7128BD74F85F98B4A6",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Happy birthday Jaspal 11:01 am",
+        "messageType": "text",
+        "timestamp": "11:01 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.159609",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3AE983D5549526A370B7",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Acvideo-pipmedia-playmsg-video0:18Koe aasi 1:17 pm1:17 pm",
+        "messageType": "text",
+        "timestamp": "1:17 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.201349",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AB8A5537C0C3F99B5DB",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "1:17 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.237092",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A06EF7CA5F09ABDD2A3",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Tomorrow 11 am missi roti\nLangar at Newyork\nProperty9:22 pm",
+        "messageType": "text",
+        "timestamp": "9:22 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.274458",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A1779F727015C98398B",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "4:22 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.305191",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ABFE732E0FEB7A09982",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.337176",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ABA15A742BE2FCDC4B4",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "4:25 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.370266",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A096C711505EDE5DFD1",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Acic-imagePhotoSingh is king with Pagri and beard4:34 pm",
+        "messageType": "text",
+        "timestamp": "4:34 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.405657",
+        "predicted_label": "entertainment_news",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3A79B179456965966E66",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Acic-imagePhotoKia bat aaa4:35 pm",
+        "messageType": "text",
+        "timestamp": "4:35 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.443058",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AB1B0D2BCBD54338FD4",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Aj ghar dia ne pehchanana ni4:36 pm",
+        "messageType": "text",
+        "timestamp": "4:36 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.482480",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A44C88263FEAC243220",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:07 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.516310",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC22EC16CDF76904D3322464C02E6B55",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.547745",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A575CFBA40DF91D7A8C",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "5:23 pm",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:07 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.581064",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACEEFBCC71838D5F2FD80FF93DE4AC22",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Acic-imagePhotoChota pargat singh5:25 pm",
+        "messageType": "text",
+        "timestamp": "5:25 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.616079",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACD672B2532203F87683334589327D88",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.650093",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC5AB41517D6BDFF000DBD3609CEC198",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.683923",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A6037E321DBA67E55B5",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Due to adverse weather conditions today , cremation of Sardar Gurcharan Singh Bhullar will take place at 1pm in his native village.8:12 am",
+        "messageType": "text",
+        "timestamp": "8:12 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.726216",
+        "predicted_label": "weather_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "4A54D09E1A39EF06A1EE",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.761379",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AA12665BC6F6E10FC52",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:08 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.794313",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC35E244C03D5F65AC3CE64E24C5942C",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:08 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.826787",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A8265BDB6F37BBBD6AC",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:08 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.859723",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A3AAE530F4AE66292B3",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Satinder Singh Ref Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:08 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.893706",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "2ACF3F5D475AB6D169BE",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Malhi Isherpuri",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:08 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.927534",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A737C0891D4050EC1F5",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.961515",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AF17895A5ED2178BE1E",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:08 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:09.995225",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A0A3A269E5E826804F7",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.028001",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A88F45F4AFD597528A8",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "4:22 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.059577",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AA40C4B89D38E7C4875",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.091794",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A951C394685A6C45074",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.124813",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A38C2EC3905E0B6DFED",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.180490",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC7E97298681329248968A38D1DC7D4A",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.229693",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AEE409CC974A81F173D",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Good Job 8:30 am",
+        "messageType": "text",
+        "timestamp": "8:30 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.269593",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "2A8F31AE62CA332AB226",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Malhi Isherpuri",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.307715",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A165847DFB1C7CED7BF",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "+91 99154 44483"
+        },
+        "messageContent": "8:59 am",
+        "messageType": "text",
+        "timestamp": "8:59 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.338947",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC72B4D4BBC65FB48F5887426CE908DC",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:10 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.375012",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AE872CF8DBA76ABAC2B",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Hello friends! As u r aware that Jaspal Bhaji has opened his new office by the name of Friends air conditioners in Urban Estate Phase1. He has requested all of us to join for a cup of tea/ coffee at his office which is SCF-115 near Dhandi Chakki . Timing is 12pm .10:45 am",
+        "messageType": "text",
+        "timestamp": "10:45 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.438990",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A7F095E12B750DA8CBF",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Ok10:47 am",
+        "messageType": "text",
+        "timestamp": "10:47 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.472976",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A07DB96FC55899E4BEE",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:10 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.507598",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A871FA108B99931D557",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2forward-refreshedForwardedic_tempmapCreated with Sketch.10:49 am",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:10 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.553316",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "2A1D4DC1B319F988A81A",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2Hello friends! As u r aware that Jaspal Bhaji has opened his new office by the name of Friends air conditioners in Urban Estate Phase1. He has requested all of us to join for a cup of tea/ coffee at his office which is SCF-115 near Dhandi Chakki . Timing is 12pm .Coming 10:50 am",
+        "messageType": "text",
+        "timestamp": "10:50 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.628473",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A62947F3D4FFB57819C",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2",
+        "messageType": "text",
+        "timestamp": "11:45 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.673461",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A8B8B5F1A8E7990B115",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Waiting for u Bhaji 11:46 am",
+        "messageType": "text",
+        "timestamp": "11:46 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.714444",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AADA90B25DE70B5BD85",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Waiting ur dollar not u 1:15 pm",
+        "messageType": "text",
+        "timestamp": "",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.755603",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A72557C098363EE6416",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.795620",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AA20D42E96850070D82",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "1:17 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.833723",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A4466317B0ABED63C98",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "1:17 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.872641",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC48C9A5C390175942F774C399B6F2B2",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:10 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.912997",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AC94E7F0C2C560858A9",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "5:23 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.951028",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A4C5D2BDF83EB3CFA9B",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Jaspal Ac",
+        "messageType": "text",
+        "timestamp": "5:23 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:10.988211",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A1EE46C8A3BA9D9601E",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.027895",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A338DD97E7CADB9CC20",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Sardar Gurcharan Singh Bhullar , father of Nishan Singh Bhullar.12:55 pm",
+        "messageType": "text",
+        "timestamp": "12:55 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.071431",
+        "predicted_label": "entertainment_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A2EC006DE9A6450455E",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2forward-refreshedForwardedic_tempmapCreated with Sketch.12:55 pm",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:10 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.113128",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3AB6C1F819FA6B882579",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:10 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.151482",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ACA156AA356EDBEC60F",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.190820",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A4820BA917BCECFD3C1",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Bhullar Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:14 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.229118",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A66A9E6F6D849B3CC1F",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:14 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.265227",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACB8AF39CF6AF018D17640509F059930",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.302032",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AE7A5EC08CD4CCA0FAD",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Satinder Singh Ref Inderbir",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:14 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.339211",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A46540D04FFC6539364",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Bhullar Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.377473",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "4AF73CE15BC23175AD8F",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singhvideo-pipmedia-playmsg-video0:16Kan8:33 pm8:33 pm",
+        "messageType": "text",
+        "timestamp": "8:33 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.423692",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AE1899A138B2F521E0D",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "With heavy heart I would like to inform u all that father of Jaspal Bhaji expired today morning. Cremation will take place at Thekrewal Saran  village in Gurdaspur district. Timing will be notified later. May the departed soul rest in peace . 10:08 am",
+        "messageType": "text",
+        "timestamp": "10:08 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.485975",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A73D1AC1B95D24FDE55",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Rip 10:10 am",
+        "messageType": "text",
+        "timestamp": "10:10 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.523288",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AB45AABD0E6452C3B38",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "+91 99154 44483"
+        },
+        "messageContent": "RIP 10:20 am",
+        "messageType": "text",
+        "timestamp": "10:20 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.556347",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A2CC0463B24DEFA104B",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "RIP 10:20 am",
+        "messageType": "text",
+        "timestamp": "10:20 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.588937",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AED2917566101942CB4",
+        "sender": {
+            "name": "You:",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Very sad10:21 am",
+        "messageType": "text",
+        "timestamp": "",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.622187",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Negative"
+    },
+    {
+        "id": "4AFA4F367F059173B917",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.656431",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ACCA441E4CAFB45486B",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "RIP10:30 am",
+        "messageType": "text",
+        "timestamp": "10:30 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.688780",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "2ADC04011E153B81E587",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Very saddening Waheguru ohna nu apne charna vich niwas bakhse  RIP10:51 am",
+        "messageType": "text",
+        "timestamp": "10:51 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.725889",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "3AA9A86C1E6938F67CA2",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "+91 788 926 1007"
+        },
+        "messageContent": "RIP\n10:52 am",
+        "messageType": "text",
+        "timestamp": "10:52 am",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.759026",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC8338DB85497D79048BB9EFADCCF8DE",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Laddi Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.792302",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A67E726472E80F35FCF",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Cremation will be at 3pm today12:25 pm",
+        "messageType": "text",
+        "timestamp": "12:25 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.827105",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A99B3C643E3454557BC",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Teji Inderbir Phase 2forward-refreshedForwardedic_tempmapCreated with Sketch.12:27 pm",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:14 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.869909",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Positive"
+    },
+    {
+        "id": "AC8339EDF794ED769AE02E2C27458C6F",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Rip1:50 pm",
+        "messageType": "text",
+        "timestamp": "1:50 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.904088",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A2C53AC75556E814140",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "ਗੁਰਦੁਆਰਾ ਬਾਬਾ ਦੀਪ ਸਿੰਘ ਸ਼ਹੀਦ 3:39 pm",
+        "messageType": "text",
+        "timestamp": "3:39 pm",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.938747",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A3BD7055C7AF7FE5DD4",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:11.970131",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "4A132CDD1988BBD6A6FE",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Indervir Singh",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:12.001039",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "album-3ACFA33ADB30645B0E91-3A5F86E6666CD833E31D-11",
+        "sender": {
+            "name": " Read ",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "7:45 pm",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:39:14 AM",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:12.036570",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "album-3A26A7986316B463BEEC-3A38C2EC3905E0B6DFED-5",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Palwinder Inderbir",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "Ladakh_Tour_2024_1779257358268",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:12.070591",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    }
+]

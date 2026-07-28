@@ -1,0 +1,32 @@
+[
+    {
+        "id": "3AECF56721A090172238",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:41:28 AM",
+        "group_name": "66_______________________1779257490597",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.654107",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC282062E3BFA8561218DF186ECEA27F",
+        "sender": {
+            "name": "Harpal Singh",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "ਮੋਟਰਾਂ ਵਾਲੇ ਫੀਡਰ 4-20 ਤੋੰ ਦੁਬਾਰਾ ਚਲ ਪਏ ਹਨ ਅਗਲੇ ਹੁਕਮਾ ਤੱਕ4:20 pm",
+        "messageType": "text",
+        "timestamp": "4:20 pm",
+        "group_name": "66_______________________1779257490597",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.689483",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    }
+]

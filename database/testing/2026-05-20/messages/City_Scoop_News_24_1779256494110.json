@@ -1,0 +1,47 @@
+[
+    {
+        "id": "AC26AC3E46A4D78B6946CA26053D84CE",
+        "sender": {
+            "name": "Avtar Singh",
+            "phoneNumber": "+91 98147 93890"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:24:34 AM",
+        "group_name": "City_Scoop_News_24_1779256494110",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:33.470938",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC48DB1EB948828283FC81D4AF421FB4",
+        "sender": {
+            "name": "k9newspunjab90",
+            "phoneNumber": "+91 70875 76366"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:24:34 AM",
+        "group_name": "City_Scoop_News_24_1779256494110",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:33.511200",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC68E631358B787D3ABFA38726D681FC",
+        "sender": {
+            "name": "k9newspunjab90",
+            "phoneNumber": "+91 70875 76366"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:24:34 AM",
+        "group_name": "City_Scoop_News_24_1779256494110",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:33.550691",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "id": "3A4C04B193B37F2C93B2",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:48:04 AM",
+        "group_name": "Jal_cantt_constituency_z_1779257921993",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.208506",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    }
+]

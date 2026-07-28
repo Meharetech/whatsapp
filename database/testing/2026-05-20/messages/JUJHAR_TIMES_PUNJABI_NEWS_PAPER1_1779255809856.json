@@ -1,0 +1,77 @@
+[
+    {
+        "id": "AC1F8FFF3391A7F891C571BCD748796D",
+        "sender": {
+            "name": "Pk Sharma",
+            "phoneNumber": "+91 98556 50983"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:13:17 AM",
+        "group_name": "JUJHAR_TIMES_PUNJABI_NEWS_PAPER1_1779255809856",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.257675",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC4AA8556B9C4AA29007854692D934C4",
+        "sender": {
+            "name": "V.K.Sharma",
+            "phoneNumber": "+91 98147 99888"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:13:17 AM",
+        "group_name": "JUJHAR_TIMES_PUNJABI_NEWS_PAPER1_1779255809856",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.299109",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A9112DA63E8132D830C",
+        "sender": {
+            "name": "Sunil Kumar Arora",
+            "phoneNumber": "+91 98552 22247"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:13:17 AM",
+        "group_name": "JUJHAR_TIMES_PUNJABI_NEWS_PAPER1_1779255809856",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.337298",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACD3FA1778EBCE48260B6AADEC60322F",
+        "sender": {
+            "name": "Sandeep Jit Pateelaji",
+            "phoneNumber": "+91 98155 37378"
+        },
+        "messageContent": "Sandeep Jit Pateelaji",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:13:20 AM",
+        "group_name": "JUJHAR_TIMES_PUNJABI_NEWS_PAPER1_1779255809856",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.379424",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AD3004EC98C1490E699",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:13:23 AM",
+        "group_name": "JUJHAR_TIMES_PUNJABI_NEWS_PAPER1_1779255809856",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.434279",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    }
+]

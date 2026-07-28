@@ -1,0 +1,272 @@
+[
+    {
+        "id": "3AA91B3D485053AB6681",
+        "sender": {
+            "name": "Karan Soni",
+            "phoneNumber": "+91 98725 48925"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:50:49 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.311373",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AFCF20580D16BDD58F0",
+        "sender": {
+            "name": "Karan Soni",
+            "phoneNumber": "+91 98725 48925"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:50:49 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.357398",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A1384D270A25FA84AAB",
+        "sender": {
+            "name": "Karan Soni",
+            "phoneNumber": "+91 98725 48925"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:50:49 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.398394",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC31CB66A5543E25D2FB7D2C7274D35B",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:04 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.455798",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC0B6C0D95E65BC768729A30F1D12868",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:04 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.503714",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACAA28F6FED939BDE0B76C720E33274C",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:04 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.539631",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC5D8A27615652AA002F717B10010556",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:04 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.575655",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC2873D2E0434036B5CCFA2A4A102B71",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:04 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.609474",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACE1B6974C15D818BB880011557B09F9",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:08 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.642641",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACED1AFFC7AA362182824854C5BD10E7",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:08 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.675614",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC6AE78222AC8EA1D7FED0C10C7DE7ED",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:08 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.709610",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC215F84A242908C79FE41A1175A9C35",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:08 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.742913",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACCA1BDA972DAB09C1CE8FDF6E1855E1",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:08 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.784109",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC94F99DD96DC2C61C1F9BE8599BD6E3",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:08 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.822676",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AF07A05673C9CDB57A2",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:09 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.868401",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACF6B93CA00FE4D6B2B0F3940CA1B1AD",
+        "sender": {
+            "name": "Dharminder Singh",
+            "phoneNumber": "+91 98146 58642"
+        },
+        "messageContent": "Dharminder Singh",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:51:09 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.907902",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC459302FBA3A7905C945894B91056B0",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:09 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.948408",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "AC49E8759475BF6A86DD2B87D50532A3",
+        "sender": {
+            "name": "Sukhwinderkumar",
+            "phoneNumber": "+91 79869 52803"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:51:09 AM",
+        "group_name": "Jalandhar_politics____1779258074851",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:43.984344",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    }
+]

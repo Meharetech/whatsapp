@@ -402,6 +402,27 @@ html, body {
     font-weight: 500;
 }
 
+.summary-action {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.summary-action .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-action .btn:hover {
+    transform: scale(1.05);
+}
+
 /* ============================================================================
    TABLE CONTROLS
    ============================================================================ */

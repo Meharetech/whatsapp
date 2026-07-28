@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Analysis Server - User Login</title>
+    <link rel="stylesheet" href="/static/css/matrix_login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Matrix Background -->
+    <div class="matrix-bg">
+        <div class="matrix-grid"></div>
+        <div class="matrix-streams"></div>
+        <div class="matrix-particles"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="login-container">
+        <!-- Login Form -->
+        <div class="login-form">
+            <div class="form-header">
+                <h1 class="form-title"> LOGIN</h1>
+                <div class="form-subtitle">WhatsApp Analysis Server</div>
+            </div>
+            
+            <!-- Flash Messages -->
+            
+                
+                    <div class="flash-messages">
+                        
+                            <div class="flash-message warning">
+                                <div class="message-icon">
+                                    
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    
+                                </div>
+                                <div class="message-content">Please log in to access this page.</div>
+                            </div>
+                        
+                    </div>
+                
+            
+            
+            <!-- Login Form -->
+            <form method="POST" action="/auth/user/login" class="auth-form" id="loginForm">
+                <input id="csrf_token" name="csrf_token" type="hidden" value="Ijk3MmRmOTljYWIxZGJlMzI2NWMwYTk5NTdmMjJiNWQ5NTcyYmEyYTki.aNAZtg.dKBvcHDTnr_DimRWsHJlPj-2ZAY">
+                
+                <!-- Username Field -->
+                <div class="form-field">
+                    <div class="input-wrapper">
+                        <input class="matrix-input" id="username" maxlength="80" minlength="3" name="username" placeholder="Username" required type="text" value="">
+                        <div class="input-border"></div>
+                        <div class="input-glow"></div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Password Field -->
+                <div class="form-field">
+                    <div class="input-wrapper">
+                        <input class="matrix-input" id="password" minlength="6" name="password" placeholder="Password" required type="password" value="">
+                        <div class="input-border"></div>
+                        <div class="input-glow"></div>
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    </div>
+                    
+                </div>
+                
+                <!-- Remember Me -->
+                <div class="form-field checkbox-field">
+                    <label class="checkbox-label">
+                        <input class="matrix-checkbox" id="remember" name="remember" type="checkbox" value="y">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Remember me</span>
+                    </label>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="matrix-button" id="loginBtn">
+                    <span class="button-text">Login</span>
+                    <span class="button-loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Authenticating...
+                    </span>
+                </button>
+            </form>
+            
+            <!-- Footer Links -->
+            <div class="form-footer">
+                <a href="/auth/admin/login" class="footer-link">
+                    <span>Admin Portal</span>
+                </a>
+                <a href="#" class="footer-link">
+                    <span>Help</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/matrix_login.js"></script>
+</body>
+</html>

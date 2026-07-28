@@ -1,0 +1,47 @@
+[
+    {
+        "id": "3AA91B3D485053AB6681",
+        "sender": {
+            "name": "Karan Soni",
+            "phoneNumber": "+91 98725 48925"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:50:49 AM",
+        "group_name": "Jalandhar_Urban_Team_2024_1779258054459",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.028141",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AFCF20580D16BDD58F0",
+        "sender": {
+            "name": "Karan Soni",
+            "phoneNumber": "+91 98725 48925"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:50:49 AM",
+        "group_name": "Jalandhar_Urban_Team_2024_1779258054459",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.069747",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A1384D270A25FA84AAB",
+        "sender": {
+            "name": "Karan Soni",
+            "phoneNumber": "+91 98725 48925"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:50:49 AM",
+        "group_name": "Jalandhar_Urban_Team_2024_1779258054459",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:44.104299",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    }
+]

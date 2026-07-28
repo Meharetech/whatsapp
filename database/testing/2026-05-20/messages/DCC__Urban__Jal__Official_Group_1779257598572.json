@@ -1,0 +1,137 @@
+[
+    {
+        "id": "4A1D727A1F4FD7DF9003",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:35.976748",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "4AE5DB321051BA79D339",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.015414",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "4A5B34F65CF56A356AE7",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.050623",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AB21019F38D3A3DF4B5",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "‪+919878592045‬",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.083144",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A804E91006C096D4856",
+        "sender": {
+            "name": "Sharry Chadha",
+            "phoneNumber": "+91 98780 00492"
+        },
+        "messageContent": "Sharry Chadha",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.118022",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "album-4AA06136C5E3F91D1021-4AAD216FBCCB3E7963DE-5",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.159502",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A33E9FFCDCE54E6586C",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.200610",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "ACDCA38031F8A7EE24186C8C299EA85D",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Image message",
+        "messageType": "image",
+        "timestamp": "5/20/2026, 11:43:14 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.242813",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AE54E328F300AEDCAD3",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:43:17 AM",
+        "group_name": "DCC__Urban__Jal__Official_Group_1779257598572",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:36.289315",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    }
+]

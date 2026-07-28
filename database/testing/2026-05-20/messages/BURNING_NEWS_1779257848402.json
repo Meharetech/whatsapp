@@ -1,0 +1,272 @@
+[
+    {
+        "id": "3A2E7EB83E2931C98C16",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:46:49 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.777518",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AE9BBB2C2A99A5B81F7",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:46:49 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.826652",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A8FC3466FD98A8AE0EA",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "+91 70095 57078",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:46:49 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.877480",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AE0744029B13C7DFB3C",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "+91 80522 33590",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:46:55 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.912122",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AB9DA30866BAAD027FC",
+        "sender": {
+            "name": "Vanyayogini",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~ Vanyayogini",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:46:55 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.945771",
+        "predicted_label": "casual_chat",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AA768EBEA4DE487BCB8",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "8:41 am",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.982141",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AC3247AF36CC338F53B",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "7:19 pm",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.016935",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A0E95574D7BE1FD7AD5",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:47:00 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.050443",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ACEAC80517F44AE7932",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:47:00 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.083402",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ADA538488DB3DC4005C",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "8:10 pm",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.116531",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A9094394F20C3CD8716",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "6:15 pm",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.153414",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AA33E746EE51A64E32F",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "10:57 am",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.192955",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3ABD0DB92F5F0ADDE3B3",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "7:42 pm",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.239599",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AB0B3D674566ED64C15",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "10:44 am",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.279435",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A251691C2FAB6CA2B41",
+        "sender": {
+            "name": "Rajesh Sharma",
+            "phoneNumber": "+91 98558 72000"
+        },
+        "messageContent": "Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "ic-download",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.319667",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A6141FF6FECE9F9F0B9",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:47:13 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.358370",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3AD46381F677D73E220C",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:47:16 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.396732",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    },
+    {
+        "id": "3A55EF93284665882F60",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "~Rajesh Sharma",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:47:16 AM",
+        "group_name": "BURNING_NEWS_1779257848402",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:32.433752",
+        "predicted_label": "sports_news",
+        "predicted_sentiment": "Neutral"
+    }
+]

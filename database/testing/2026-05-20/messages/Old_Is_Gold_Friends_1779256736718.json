@@ -1,0 +1,59 @@
+{
+  "groupInfo": {
+    "name": "Old Is Gold Friends",
+    "exportDate": "2026-05-20T05:58:56.718Z",
+    "totalMessages": 5
+  },
+  "messages": [
+    {
+      "id": "3AAF66F5D282DEFB85BC",
+      "sender": {
+        "name": "Unknown",
+        "phoneNumber": "Unknown"
+      },
+      "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+      "messageType": "text",
+      "timestamp": "5/20/2026, 11:28:51 AM"
+    },
+    {
+      "id": "ACE83ECA19C568ADC61CBA545BAC9A80",
+      "sender": {
+        "name": "Surinder Kumar",
+        "phoneNumber": "+91 94174 94263"
+      },
+      "messageContent": "जय जय श्री कृष्णा जी \n\nपृथ्वी पर करोड़ों लोग हैं तो आपका जन्म क्यों हुआ कारण यह है कि भगवान की आपसे कुछ उम्मीद है जो अन्य करोड़ों लोगों द्वारा पूर्ण होना संभव नहीं है अपने मूल्य को महसूस करें\nमाफ करने की आदत डालें ताकि आपके दिमाग में किसी के प्रति नफरत पैदा न हो सके\n\n जय जय श्री राधे राधे जी 6:36 am",
+      "messageType": "text",
+      "timestamp": "6:36 am"
+    },
+    {
+      "id": "AC7D0774A5DBF8A865EE4DCF1133A7B5",
+      "sender": {
+        "name": "Bobby Oberoi",
+        "phoneNumber": "+91 98880 38909"
+      },
+      "messageContent": "Image message",
+      "messageType": "image",
+      "timestamp": "5/20/2026, 11:28:51 AM"
+    },
+    {
+      "id": "AC97533C29E918950E0BD5B8A7E44AD4",
+      "sender": {
+        "name": "Pk Sharma",
+        "phoneNumber": "+91 98556 50983"
+      },
+      "messageContent": "Image message",
+      "messageType": "image",
+      "timestamp": "5/20/2026, 11:28:51 AM"
+    },
+    {
+      "id": "ACD2519D97FF7006A0613CD4DF333A34",
+      "sender": {
+        "name": "Surinder Kumar",
+        "phoneNumber": "+91 94174 94263"
+      },
+      "messageContent": "Surinder Kumar+91 94174 94263forward-refreshedForwarded many timesvideo-pipmedia-playwds-ic-hd-filled2:31देश हित के लिए मा. प्रधानमंत्री जी ने जो गाईड लाईन्स दी उनकी देश के कई लोग मजाक उडा रहे है। लेकिन इन डॉक्टर साहब की सलाह पर जरूर गौर किजिए।10:52 am10:52 am",
+      "messageType": "text",
+      "timestamp": "10:52 am"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "id": "3A3C8BB0CCE800C8913A",
+        "sender": {
+            "name": "Unknown",
+            "phoneNumber": "Unknown"
+        },
+        "messageContent": "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Click to learn more",
+        "messageType": "text",
+        "timestamp": "5/20/2026, 11:52:00 AM",
+        "group_name": "Bharat_info_1779258124887",
+        "date": "G2-07-SEPT",
+        "processed_time": "2026-05-20T12:41:31.730727",
+        "predicted_label": "spam",
+        "predicted_sentiment": "Neutral"
+    }
+]
