@@ -11,41 +11,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Sidebar functionality
 function initializeSidebar() {
-    const menuItems = document.querySelectorAll('.menu-item');
-    const sidebar = document.querySelector('.sidebar');
+    const menuItems = document.querySelectorAll('.nav-link, .menu-item');
+    const sidebar = document.querySelector('.modern-sidebar, .sidebar');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle, .hamburger-btn, .mobile-toggle');
     
     if (!sidebar) return;
     
-    // Add click events to menu items
-    menuItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Remove active class from all items
-            menuItems.forEach(i => i.classList.remove('active'));
-            
-            // Add active class to clicked item
-            this.classList.add('active');
-            
-            // Get the page identifier
-            const page = this.getAttribute('data-page');
-            
-            // Handle navigation
-            handleMenuNavigation(page);
-        });
-    });
-    
-    // Mobile sidebar toggle
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('open');
-        });
-    }
-    
     // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
-                sidebar.classList.remove('open');
+        if (window.innerWidth <= 992) {
+            if (sidebar.classList.contains('show') || sidebar.classList.contains('open')) {
+                const isClickInsideSidebar = sidebar.contains(e.target);
+                const isClickOnToggle = mobileToggle && mobileToggle.contains(e.target);
+                
+                if (!isClickInsideSidebar && !isClickOnToggle) {
+                    if (typeof window.closeMobileMenu === 'function') {
+                        window.closeMobileMenu();
+                    } else {
+                        sidebar.classList.remove('show');
+                        sidebar.classList.remove('open');
+                    }
+                }
             }
         }
     });
@@ -54,54 +40,10 @@ function initializeSidebar() {
 // Handle menu navigation
 function handleMenuNavigation(page) {
     console.log('Navigating to:', page);
-    
-    // You can add custom logic here for each menu item
-    switch(page) {
-        case 'dashboard':
-            // Handle dashboard navigation
-            break;
-        case 'search':
-            // Handle search navigation
-            break;
-        case 'groups':
-            // Handle groups navigation
-            break;
-        case 'topics':
-            // Handle topics navigation
-            break;
-        case 'analysis':
-            // Handle analysis navigation
-            break;
-        case 'export':
-            // Handle export functionality
-            break;
-        case 'settings':
-            // Handle settings navigation
-            break;
-        case 'notifications':
-            // Handle notifications navigation
-            break;
-        case 'reports':
-            // Handle reports navigation
-            break;
-        case 'new-group':
-            // Handle new group creation
-            break;
-        case 'add-contact':
-            // Handle add contact
-            break;
-        case 'share-status':
-            // Handle share status
-            break;
-        default:
-            console.log('Unknown page:', page);
-    }
 }
 
 // Initialize charts (placeholder for future chart implementation)
 function initializeCharts() {
-    // This function will be used to initialize charts when needed
-    // You can integrate Chart.js, D3.js, or any other charting library here
     console.log('Charts initialized');
 }
 
@@ -141,8 +83,6 @@ function resetFilters(form) {
             input.value = '';
         }
     });
-    
-    // Show success message
     showNotification('Filters reset successfully', 'success');
 }
 
@@ -156,20 +96,13 @@ function applyFilters(form) {
             filters[key] = value;
         }
     }
-    
-    // You can implement AJAX filtering here
-    console.log('Applying filters:', filters);
-    
-    // Show success message
     showNotification('Filters applied successfully', 'success');
-    
-    // Reload data with filters (placeholder)
-    // reloadDashboardData(filters);
 }
 
 // Initialize action buttons
 function initializeActions() {
-    const actionButtons = document.querySelectorAll('.action-btn');
+    // Only handle generic action buttons with explicit data-action
+    const actionButtons = document.querySelectorAll('.action-btn[data-action]');
     
     actionButtons.forEach(button => {
         button.addEventListener('click', function(e) {

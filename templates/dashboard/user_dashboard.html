@@ -49,6 +49,18 @@
         
         <!-- Dashboard Content -->
         <div class="dashboard-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="banner-text">
+                    <h2>Welcome back{% if current_user and current_user.is_authenticated %}, {{ current_user.username }}{% endif %}! <span class="wave">👋</span></h2>
+                    <p>Here is the latest intelligence report for your WhatsApp assemblies and groups.</p>
+                </div>
+                <div class="banner-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">System Live Syncing</span>
+                </div>
+            </div>
+
             <!-- Main Statistics Cards -->
             <div class="stats-section">
                 <div class="section-header">
@@ -127,11 +139,19 @@
                 </div>
             </div>
             
-            <!-- Assembly Overview -->
+            <!-- Assembly Overview with Search -->
             <div class="assembly-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-list-alt"></i> Assembly Overview</h2>
-                    <p>Detailed breakdown by assembly</p>
+                <div class="section-header-bar">
+                    <div class="section-header">
+                        <h2><i class="fas fa-list-alt"></i> Assembly Overview</h2>
+                        <p>Detailed breakdown by assembly and groups</p>
+                    </div>
+                    <div class="search-filter-wrapper">
+                        <div class="search-input-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="assemblySearchInput" placeholder="Filter assemblies or groups..." onkeyup="filterAssemblies(this.value)">
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="assembly-container" id="assemblyBreakdown">
@@ -141,7 +161,7 @@
                         </div>
                         <div class="loading-text">
                             <h3>Loading Assembly Data</h3>
-                            <p>Scanning CSV files and analyzing phone numbers...</p>
+                            <p>Scanning files and analyzing contact metrics...</p>
                         </div>
                     </div>
                 </div>

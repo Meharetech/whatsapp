@@ -93,16 +93,16 @@ function displayAllPosts(posts) {
                 <td class="title-cell">${post.title}</td>
                 <td class="user-cell">
                     <div class="user-info">
-                        <span class="username">${post.created_by_username}</span>
-                        <span class="email">${post.created_by_email}</span>
+                        <span class="username">${post.created_by_username || 'User'}</span>
+                        <span class="email">${post.created_by_email || ''}</span>
                     </div>
                 </td>
                 <td class="assembly-cell">${post.assembly_name || 'N/A'}</td>
                 <td class="date-cell">${formatDateTime(scheduledDateTime)}</td>
                 <td class="files-cell">
                     <div class="files-summary" title="${getFilesTooltip(post.target_groups)}">
-                        <span class="files-count">${post.target_groups ? post.target_groups.length : 0}</span>
-                        <small class="files-label">Excel Files</small>
+                        <i class="fas fa-users"></i>
+                        <span class="files-count">${Array.isArray(post.target_groups) ? post.target_groups.length : 0}</span>
                     </div>
                 </td>
                 <td class="content-cell">
@@ -112,30 +112,20 @@ function displayAllPosts(posts) {
                     </div>
                 </td>
                 <td class="status-cell">
-                    <span class="status-badge ${post.status}">${post.status.toUpperCase()}</span>
+                    ${formatStatusBadge(post.status)}
+                    ${getTaskCountdownHtml(post) ? `<div style="margin-top: 4px;">${getTaskCountdownHtml(post)}</div>` : ''}
                 </td>
                 <td class="created-cell">${formatDate(post.created_at)}</td>
                 <td class="actions-cell">
                     <button class="btn btn-sm btn-secondary" onclick="viewPostDetails(${post.id})">
-                        <i class="fas fa-eye"></i> View
+                        <i class="fas fa-eye"></i>
                     </button>
                     <button class="btn btn-sm btn-primary" onclick="openStatusUpdate(${post.id})">
                         <i class="fas fa-edit"></i> Status
                     </button>
                     <button class="btn btn-sm btn-danger" onclick="confirmDeletePost(${post.id}, '${post.title}')" title="Delete Post">
-                        <i class="fas fa-trash"></i> Delete
+                        <i class="fas fa-trash"></i>
                     </button>
-                    <div class="quick-status-updates">
-                        <button class="btn btn-sm btn-success" onclick="quickStatusUpdate(${post.id}, 'completed')" title="Mark as Completed">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <button class="btn btn-sm btn-warning" onclick="quickStatusUpdate(${post.id}, 'running')" title="Mark as Running">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger" onclick="quickStatusUpdate(${post.id}, 'failed')" title="Mark as Failed">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
                 </td>
             </tr>
         `;
@@ -331,7 +321,7 @@ function viewPostDetails(postId) {
     `;
     
     content.innerHTML = detailsHtml;
-    modal.style.display = 'block';
+    openModal('postDetailsModal');
 }
 
 // Open status update modal
@@ -359,55 +349,18 @@ function openStatusUpdate(postId) {
         document.getElementById('newStatus').onchange = function() {
             if (this.value === 'completed') {
                 completionFileGroup.style.display = 'block';
-                // Add visual feedback
-                completionFileGroup.style.animation = 'fadeIn 0.3s ease-in';
             } else {
                 completionFileGroup.style.display = 'none';
             }
         };
         
-        // Add event listener for file selection feedback
-        document.getElementById('completionFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                // Show file info
-                const fileInfo = document.createElement('div');
-                fileInfo.className = 'file-info';
-                fileInfo.innerHTML = `
-                    <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
-                    <span style="margin-left: 0.5rem; font-weight: 500;">${file.name} (${(file.size / 1024).toFixed(1)} KB)</span>
-                `;
-                fileInfo.style.marginTop = '0.5rem';
-                fileInfo.style.padding = '0.5rem';
-                fileInfo.style.background = '#f0fdf4';
-                fileInfo.style.border = '1px solid #bbf7d0';
-                fileInfo.style.borderRadius = 'var(--radius-sm)';
-                
-                // Remove any existing file info
-                const existingInfo = completionFileGroup.querySelector('.file-info');
-                if (existingInfo) {
-                    existingInfo.remove();
-                }
-                
-                completionFileGroup.appendChild(fileInfo);
-            }
-        });
-        
-        // Show current status info
-        const currentStatus = post.status.toUpperCase();
-        const statusColors = {
-            'pending': '🟡',
-            'running': '🔵', 
-            'completed': '🟢',
-            'failed': '🔴',
-            'cancelled': '⚫'
-        };
-        
         // Update modal title to show current status
         const modalTitle = document.querySelector('#statusUpdateModal .modal-header h3');
-        modalTitle.innerHTML = `<i class="fas fa-edit"></i> Update Post Status - Current: ${statusColors[post.status]} ${currentStatus}`;
+        if (modalTitle) {
+            modalTitle.innerHTML = `<i class="fas fa-edit"></i> Update Status: ${post.title || 'Broadcast'}`;
+        }
         
-        document.getElementById('statusUpdateModal').style.display = 'block';
+        openModal('statusUpdateModal');
     } else {
         showError('Post not found');
     }
@@ -440,10 +393,11 @@ async function updatePostStatus() {
     
     try {
         // Show loading state
-        const updateBtn = document.querySelector('#statusUpdateModal .btn-primary');
-        const originalText = updateBtn.innerHTML;
-        updateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
-        updateBtn.disabled = true;
+        const updateBtn = document.querySelector('#statusUpdateModal .btn-success');
+        if (updateBtn) {
+            updateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+            updateBtn.disabled = true;
+        }
         
         // Create FormData for file upload
         const formData = new FormData();
@@ -486,9 +440,11 @@ async function updatePostStatus() {
         showError('Error updating status: ' + error.message);
     } finally {
         // Reset button state
-        const updateBtn = document.querySelector('#statusUpdateModal .btn-primary');
-        updateBtn.innerHTML = 'Update Status';
-        updateBtn.disabled = false;
+        const updateBtn = document.querySelector('#statusUpdateModal .btn-success');
+        if (updateBtn) {
+            updateBtn.innerHTML = '<i class="fas fa-check"></i> Update Status';
+            updateBtn.disabled = false;
+        }
     }
 }
 
@@ -541,6 +497,21 @@ function updatePagination(pagination) {
     console.log('Pagination:', pagination);
 }
 
+// Format Status Badge
+function formatStatusBadge(status) {
+    const s = (status || 'pending').toLowerCase();
+    if (s === 'running') {
+        return `<span class="status-badge running" title="3 Hours Execution Window Active"><i class="fas fa-bolt"></i> RUNNING (3 Hours)</span>`;
+    } else if (s === 'completed') {
+        return `<span class="status-badge completed"><i class="fas fa-check-circle"></i> COMPLETED</span>`;
+    } else if (s === 'failed') {
+        return `<span class="status-badge failed"><i class="fas fa-exclamation-circle"></i> FAILED</span>`;
+    } else if (s === 'cancelled') {
+        return `<span class="status-badge cancelled"><i class="fas fa-ban"></i> CANCELLED</span>`;
+    }
+    return `<span class="status-badge pending"><i class="fas fa-hourglass-half"></i> PENDING</span>`;
+}
+
 // Utility functions
 function formatDateTime(dateTime) {
     return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -556,32 +527,32 @@ function formatTime(timeString) {
 
 // Show success message
 function showSuccess(message) {
-    // You can implement a toast notification here
     alert('Success: ' + message);
 }
 
 // Show error message
 function showError(message) {
-    // You can implement a toast notification here
     alert('Error: ' + message);
 }
 
 // Open modal
 function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = 'flex';
 }
 
 // Close modal
 function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = 'none';
 }
 
-// Close modal when clicking outside
+// Close modal when clicking outside overlay
 window.onclick = function(event) {
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
+    const overlays = document.querySelectorAll('.modal-overlay');
+    overlays.forEach(overlay => {
+        if (event.target === overlay) {
+            overlay.style.display = 'none';
         }
     });
 }
@@ -757,9 +728,10 @@ async function deletePost() {
     try {
         // Show loading state
         const deleteBtn = document.querySelector('#deleteConfirmModal .btn-danger');
-        const originalText = deleteBtn.innerHTML;
-        deleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
-        deleteBtn.disabled = true;
+        if (deleteBtn) {
+            deleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+            deleteBtn.disabled = true;
+        }
         
         console.log(`Attempting to delete post ID: ${postToDelete}`);
         
@@ -803,7 +775,87 @@ async function deletePost() {
     } finally {
         // Reset button state
         const deleteBtn = document.querySelector('#deleteConfirmModal .btn-danger');
-        deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete Post';
-        deleteBtn.disabled = false;
+        if (deleteBtn) {
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete Post';
+            deleteBtn.disabled = false;
+        }
     }
 }
+
+// Countdown timer helper for admin panel
+function getTaskCountdownHtml(post) {
+    const status = (post.status || 'pending').toLowerCase();
+    
+    if (status === 'running') {
+        let startTime = new Date();
+        if (post.updated_at) {
+            startTime = new Date(post.updated_at);
+        } else if (post.scheduled_date && post.scheduled_time) {
+            startTime = new Date(post.scheduled_date + 'T' + post.scheduled_time);
+        }
+        
+        const endTime = new Date(startTime.getTime() + (3 * 60 * 60 * 1000)); // +3 Hours Window
+        const now = new Date();
+        const diffMs = endTime - now;
+        
+        if (diffMs > 0) {
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+            const pad = n => String(n).padStart(2, '0');
+            return `<span class="timer-countdown-badge running-timer" data-end-time="${endTime.getTime()}"><i class="fas fa-hourglass-half fa-spin"></i> 3h Window: ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s left</span>`;
+        } else {
+            return `<span class="timer-countdown-badge running-timer"><i class="fas fa-bolt"></i> Running (3h Window)</span>`;
+        }
+    } else if (status === 'pending') {
+        if (post.scheduled_date) {
+            const timeStr = post.scheduled_time || '00:00';
+            const scheduledTarget = new Date(post.scheduled_date + 'T' + timeStr);
+            const now = new Date();
+            const diffMs = scheduledTarget - now;
+            
+            if (diffMs > 0) {
+                const hours = Math.floor(diffMs / (1000 * 60 * 60));
+                const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+                const pad = n => String(n).padStart(2, '0');
+                return `<span class="timer-countdown-badge pending-timer" data-target-time="${scheduledTarget.getTime()}"><i class="fas fa-clock"></i> Starts in ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s</span>`;
+            } else {
+                return `<span class="timer-countdown-badge pending-timer past"><i class="fas fa-history"></i> Scheduled time reached</span>`;
+            }
+        }
+    }
+    return '';
+}
+
+// Automatic 1-second interval loop for live timers on admin panel
+setInterval(function updateAdminLiveTimers() {
+    const pad = n => String(n).padStart(2, '0');
+    const now = new Date().getTime();
+
+    document.querySelectorAll('.running-timer[data-end-time]').forEach(elem => {
+        const endTime = parseInt(elem.getAttribute('data-end-time'), 10);
+        const diffMs = endTime - now;
+        if (diffMs > 0) {
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+            elem.innerHTML = `<i class="fas fa-hourglass-half fa-spin"></i> 3h Window: ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s left`;
+        } else {
+            elem.innerHTML = `<i class="fas fa-bolt"></i> Running (3h Window)`;
+        }
+    });
+
+    document.querySelectorAll('.pending-timer[data-target-time]').forEach(elem => {
+        const targetTime = parseInt(elem.getAttribute('data-target-time'), 10);
+        const diffMs = targetTime - now;
+        if (diffMs > 0) {
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+            elem.innerHTML = `<i class="fas fa-clock"></i> Starts in ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s`;
+        } else {
+            elem.innerHTML = `<i class="fas fa-history"></i> Scheduled time reached`;
+        }
+    });
+}, 1000);

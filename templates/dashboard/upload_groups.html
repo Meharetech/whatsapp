@@ -384,6 +384,54 @@
     text-transform: uppercase;
     font-weight: 500;
 }
+
+/* Uploaded Files Table Styling */
+.table-responsive {
+    overflow-x: auto;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+    margin-top: 15px;
+}
+.uploaded-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.uploaded-table th {
+    background: #ecf0f1;
+    color: #2c3e50;
+    font-weight: 600;
+    padding: 12px 15px;
+    border-bottom: 2px solid #e1e8ed;
+    font-size: 14px;
+}
+.uploaded-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e1e8ed;
+    color: #2c3e50;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.uploaded-table tbody tr:hover {
+    background-color: #f1f2f6;
+}
+.btn-delete-file {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn-delete-file:hover {
+    background: #c0392b;
+}
 </style>
 {% endblock %}
 
@@ -490,6 +538,33 @@
                         </div>
                     </form>
                 </div>
+                
+                <!-- Uploaded Files Section -->
+                <div class="upload-card" id="uploadedFilesCard" style="display: none;">
+                    <div class="form-section">
+                        <h3><i class="fas fa-folder-open"></i> Uploaded Files on Server</h3>
+                        <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 15px;">
+                            Currently uploaded files for assembly: <strong id="currentAssemblyLabel"></strong>
+                        </p>
+                        
+                        <div class="table-responsive">
+                            <table class="uploaded-table">
+                                <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th>Type</th>
+                                        <th>Size</th>
+                                        <th>Last Modified</th>
+                                        <th style="text-align: right;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="uploadedFilesList">
+                                    <!-- Dynamic rows go here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -516,9 +591,15 @@ function initializeUploadForm() {
         if (this.value === 'new') {
             newAssemblyInput.style.display = 'block';
             document.getElementById('newAssemblyName').required = true;
+            document.getElementById('uploadedFilesCard').style.display = 'none';
         } else {
             newAssemblyInput.style.display = 'none';
             document.getElementById('newAssemblyName').required = false;
+            if (this.value) {
+                loadUploadedFiles(this.value);
+            } else {
+                document.getElementById('uploadedFilesCard').style.display = 'none';
+            }
         }
     });
     
@@ -529,13 +610,18 @@ function initializeUploadForm() {
     });
 }
 
-function loadAssemblies() {
+function loadAssemblies(selectedName = null) {
     fetch('/api/assemblies')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 assemblies = data.assemblies;
                 populateAssemblySelect();
+                if (selectedName) {
+                    const select = document.getElementById('assemblySelect');
+                    select.value = selectedName;
+                    select.dispatchEvent(new Event('change'));
+                }
             } else {
                 showStatus('Failed to load assemblies: ' + data.message, 'error');
             }
@@ -752,6 +838,7 @@ function uploadFiles(formData, assemblyName) {
         if (data.success) {
             showStatus('Files uploaded successfully!', 'success');
             resetForm();
+            loadAssemblies(assemblyName);
         } else {
             showStatus('Upload failed: ' + data.message, 'error');
         }
@@ -790,9 +877,11 @@ function resetForm() {
     selectedFiles = [];
     updateFileList();
     updateUploadSummary();
-    document.getElementById('uploadForm').reset();
-    document.getElementById('newAssemblyInput').style.display = 'none';
-    document.getElementById('newAssemblyName').required = false;
+    document.getElementById('fileInput').value = '';
+    const newAssemblyNameInput = document.getElementById('newAssemblyName');
+    if (newAssemblyNameInput) {
+        newAssemblyNameInput.value = '';
+    }
 }
 
 function showStatus(message, type) {
@@ -813,6 +902,82 @@ function showStatus(message, type) {
     setTimeout(() => {
         alert.remove();
     }, 5000);
+}
+
+function loadUploadedFiles(assemblyName) {
+    const card = document.getElementById('uploadedFilesCard');
+    const tbody = document.getElementById('uploadedFilesList');
+    const label = document.getElementById('currentAssemblyLabel');
+    
+    label.textContent = assemblyName;
+    
+    fetch(`/api/assembly-files/${encodeURIComponent(assemblyName)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                tbody.innerHTML = '';
+                if (data.files.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: #7f8c8d; padding: 20px;">
+                                No files uploaded yet for this assembly.
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    data.files.forEach(file => {
+                        const tr = document.createElement('tr');
+                        const fileType = getFileType(file.filename);
+                        const fileSize = formatFileSize(file.size);
+                        const formattedDate = new Date(file.last_modified).toLocaleString();
+                        
+                        tr.innerHTML = `
+                            <td style="padding: 12px 15px; font-weight: 500; color: #2c3e50; word-break: break-all;">${file.filename}</td>
+                            <td style="padding: 12px 15px;"><span class="file-type" style="margin-right: 0;">${fileType}</span></td>
+                            <td style="padding: 12px 15px; color: #7f8c8d;">${fileSize}</td>
+                            <td style="padding: 12px 15px; color: #7f8c8d;">${formattedDate}</td>
+                            <td style="padding: 12px 15px; text-align: right;">
+                                <button type="button" class="btn-delete-file" onclick="deleteUploadedFile('${assemblyName}', '${file.filename}')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+                card.style.display = 'block';
+            } else {
+                console.error('Failed to load files:', data.message);
+                card.style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('Error loading uploaded files:', error);
+            card.style.display = 'none';
+        });
+}
+
+function deleteUploadedFile(assemblyName, filename) {
+    if (!confirm(`Are you sure you want to delete "${filename}"?`)) {
+        return;
+    }
+    
+    fetch(`/api/assembly-files/${encodeURIComponent(assemblyName)}/${encodeURIComponent(filename)}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showStatus(`Deleted ${filename} successfully.`, 'success');
+            loadUploadedFiles(assemblyName);
+        } else {
+            showStatus(`Failed to delete file: ${data.message}`, 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Delete error:', error);
+        showStatus('Failed to delete file. Please try again.', 'error');
+    });
 }
 </script>
 {% endblock %}

@@ -1,36 +1,38 @@
 <!-- Mobile Menu Toggle Button -->
 <div class="mobile-menu-toggle" id="mobileMenuToggle">
-    <button class="hamburger-btn" onclick="toggleMobileMenu()">
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
     </button>
 </div>
 
-<!-- New Modern Sidebar -->
-<div class="modern-sidebar" id="userSidebar">
+<!-- Ultra Modern Sidebar -->
+<aside class="modern-sidebar" id="userSidebar">
     <!-- Sidebar Header -->
     <div class="sidebar-header">
         <div class="logo-container">
-            <div class="logo-icon">
-                <i class="fab fa-whatsapp"></i>
+            <div class="logo-icon-wrapper">
+                <i class="fab fa-whatsapp logo-icon"></i>
+                <span class="pulse-ring"></span>
             </div>
-            
             <div class="logo-text">
-                
-        <p>User Dashboard</p>
-        <h1>WhatsApp Analytics</h1>
+                <span class="logo-subtitle">USER DASHBOARD</span>
+                <h1 class="logo-title">WhatsApp Analytics</h1>
             </div>
         </div>
-        <!-- <button class="close-btn" onclick="closeMobileMenu()">
+        <button class="close-btn" id="closeSidebarBtn" onclick="closeMobileMenu()" aria-label="Close Navigation Menu">
             <i class="fas fa-times"></i>
-        </button> -->
+        </button>
     </div>
     
     <!-- Navigation Menu -->
     <nav class="sidebar-nav">
         <div class="nav-section">
-            <h3 class="nav-title">Main Menu</h3>
+            <div class="nav-title-wrapper">
+                <h3 class="nav-title">MAIN MENU</h3>
+                <span class="nav-title-line"></span>
+            </div>
             <ul class="nav-list">
                 <li class="nav-item">
                     <a href="{{ url_for('user.user_dashboard') }}" class="nav-link {% if request.endpoint == 'user.user_dashboard' %}active{% endif %}">
@@ -45,7 +47,7 @@
                 <li class="nav-item">
                     <a href="{{ url_for('user.whatsapp_analysis') }}" class="nav-link {% if request.endpoint == 'user.whatsapp_analysis' %}active{% endif %}">
                         <div class="nav-icon">
-                <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                         <span class="nav-text">WhatsApp Analysis</span>
                         <div class="nav-indicator"></div>
@@ -65,17 +67,17 @@
                 <li class="nav-item">
                     <a href="{{ url_for('user.post_sending_groups') }}" class="nav-link {% if request.endpoint == 'user.post_sending_groups' %}active{% endif %}">
                         <div class="nav-icon">
-                <i class="fas fa-paper-plane"></i>
+                            <i class="fas fa-paper-plane"></i>
                         </div>
                         <span class="nav-text">Post Sending Groups</span>
                         <div class="nav-indicator"></div>
-            </a>
+                    </a>
                 </li>
             
                 <li class="nav-item">
                     <a href="{{ url_for('user.whatsapp_groups_list') }}" class="nav-link {% if request.endpoint == 'user.whatsapp_groups_list' %}active{% endif %}">
                         <div class="nav-icon">
-                <i class="fas fa-users"></i>
+                            <i class="fas fa-users"></i>
                         </div>
                         <span class="nav-text">Groups List</span>
                         <div class="nav-indicator"></div>
@@ -95,29 +97,41 @@
                 <li class="nav-item">
                     <a href="{{ url_for('user.group_sender_analysis') }}" class="nav-link {% if request.endpoint == 'user.group_sender_analysis' %}active{% endif %}">
                         <div class="nav-icon">
-                <i class="fas fa-user-friends"></i>
+                            <i class="fas fa-user-circle"></i>
                         </div>
                         <span class="nav-text">Sender Analysis</span>
                         <div class="nav-indicator"></div>
-            </a>
+                    </a>
                 </li>
             
                 <li class="nav-item">
                     <a href="{{ url_for('user.common_members_analysis') }}" class="nav-link {% if request.endpoint == 'user.common_members_analysis' %}active{% endif %}">
                         <div class="nav-icon">
-                <i class="fas fa-link"></i>
+                            <i class="fas fa-link"></i>
                         </div>
                         <span class="nav-text">Common Members</span>
                         <div class="nav-indicator"></div>
-            </a>
+                    </a>
                 </li>
             </ul>
         </div>
     </nav>
     
-    <!-- Sidebar Footer -->
+    <!-- User Profile Quick Card & Logout Footer -->
     <div class="sidebar-footer">
-        <form method="POST" action="{{ url_for('auth.logout') }}" id="logoutForm">
+        {% if current_user and current_user.is_authenticated %}
+        <div class="user-mini-badge">
+            <div class="user-avatar-circle">
+                {{ current_user.username[0] | upper }}
+            </div>
+            <div class="user-info-text">
+                <span class="user-name-display">{{ current_user.username }}</span>
+                <span class="user-role-badge">Member</span>
+            </div>
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('auth.logout') }}" id="logoutForm" style="margin:0;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <button type="submit" class="logout-btn" id="logoutBtn">
                 <div class="logout-icon">
@@ -127,54 +141,60 @@
             </button>
         </form>
     </div>
-</div>
+</aside>
 
 <!-- Mobile Overlay -->
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 
 <style>
-/* ===== NEW MODERN SIDEBAR DESIGN ===== */
+/* ===== ULTRA MODERN SIDEBAR & RESPONSIVE DRAWER STYLES ===== */
+:root {
+    --sidebar-width: 250px;
+    --sidebar-bg: #0d111a;
+    --accent-emerald: #10b981;
+    --accent-whatsapp: #25D366;
+}
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle Button */
 .mobile-menu-toggle {
     display: none;
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
+    top: 14px;
+    left: 14px;
+    z-index: 10005;
 }
 
 .hamburger-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border: none;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 4px;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.5);
 }
 
 .hamburger-line {
     width: 20px;
-    height: 2px;
-    background: white;
-    border-radius: 2px;
+    height: 2.5px;
+    background: #ffffff;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
 .hamburger-btn.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(4px, 5px);
 }
 
 .hamburger-btn.active .hamburger-line:nth-child(2) {
@@ -182,125 +202,151 @@
 }
 
 .hamburger-btn.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+    transform: rotate(-45deg) translate(4px, -5px);
 }
 
-/* Modern Sidebar - Compact Version */
+/* Sidebar Container */
 .modern-sidebar {
-    width: 240px;
-    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    width: var(--sidebar-width);
+    background: linear-gradient(180deg, #0d111a 0%, #0a0e17 60%, #070910 100%);
     display: flex;
     flex-direction: column;
     position: fixed;
-    height: 100vh;
-    overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Sidebar Header - Compact */
-.sidebar-header {
-    padding: 20px 15px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.sidebar-header::before {
-    content: '';
-    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 6px 0 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    padding: 22px 18px 18px;
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.12) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    position: relative;
-    z-index: 1;
+    gap: 12px;
 }
 
-.logo-icon {
-    width: 35px;
-    height: 35px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+.logo-icon-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    flex-shrink: 0;
 }
 
-.logo-icon i {
-    font-size: 18px;
-    color: white;
+.logo-icon {
+    font-size: 20px;
+    color: #ffffff;
 }
 
-.logo-text h1 {
-    color: white;
-    font-size: 16px;
+.pulse-ring {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 14px;
+    border: 2px solid rgba(37, 211, 102, 0.4);
+    animation: pulseGlow 2.5s ease-out infinite;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(0.96); opacity: 0.8; }
+    50% { transform: scale(1.06); opacity: 0; }
+    100% { transform: scale(0.96); opacity: 0; }
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-subtitle {
+    font-size: 8.5px;
     font-weight: 700;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #10b981;
+    letter-spacing: 1.2px;
+    margin-bottom: 2px;
 }
 
-.logo-text p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 10px;
-    margin: 1px 0 0 0;
-    font-weight: 500;
+.logo-title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.2px;
+    line-height: 1.2;
 }
 
 .close-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 255, 255, 0.2);
+    top: 18px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
+    color: #94a3b8;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
     cursor: pointer;
     display: none;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    font-size: 12px;
+    transition: all 0.2s ease;
+    font-size: 13px;
 }
 
 .close-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
 }
 
-/* Navigation - Compact */
+/* Sidebar Navigation */
 .sidebar-nav {
     flex: 1;
-    padding: 15px 12px;
+    padding: 18px 12px;
 }
 
 .nav-section {
     margin-bottom: 20px;
 }
 
-.nav-title {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.nav-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 12px;
-    padding-left: 10px;
+    padding-left: 6px;
+}
+
+.nav-title {
+    color: #64748b;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 0;
+}
+
+.nav-title-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-list {
@@ -317,143 +363,175 @@
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    color: rgba(255, 255, 255, 0.8);
+    color: #94a3b8;
     text-decoration: none;
     border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-.nav-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.nav-link:hover::before {
-    opacity: 1;
+    background: transparent;
+    border: 1px solid transparent;
 }
 
 .nav-link:hover {
-    color: white;
-    transform: translateX(3px);
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateX(4px);
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    transform: translateX(3px);
-}
-
-.nav-link.active::before {
-    opacity: 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.15) 100%);
+    color: #ffffff;
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+    font-weight: 600;
 }
 
 .nav-icon {
     width: 30px;
     height: 30px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.nav-link:hover .nav-icon {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-
-.nav-link.active .nav-icon {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
+    transition: all 0.25s ease;
+    flex-shrink: 0;
 }
 
 .nav-icon i {
-    font-size: 14px;
-    transition: all 0.3s ease;
+    font-size: 13.5px;
+    color: #94a3b8;
+    transition: all 0.25s ease;
+}
+
+.nav-link:hover .nav-icon {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.05);
+}
+
+.nav-link:hover .nav-icon i {
+    color: #10b981;
+}
+
+.nav-link.active .nav-icon {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+}
+
+.nav-link.active .nav-icon i {
+    color: #ffffff;
 }
 
 .nav-text {
     font-size: 13px;
-    font-weight: 500;
     position: relative;
     z-index: 1;
-    transition: all 0.3s ease;
 }
 
 .nav-indicator {
-    width: 3px;
+    width: 4px;
     height: 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 2px;
+    background: #10b981;
+    border-radius: 4px;
     margin-left: auto;
     opacity: 0;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
+    transform: scaleY(0.4);
+    transition: all 0.25s ease;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
 }
 
-.nav-link:hover .nav-indicator,
 .nav-link.active .nav-indicator {
     opacity: 1;
-    transform: scaleY(1.2);
+    transform: scaleY(1);
 }
 
-/* Sidebar Footer - Compact */
+/* User Badge & Footer */
 .sidebar-footer {
-    padding: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-mini-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.user-avatar-circle {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.user-info-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.user-name-display {
+    color: #f1f5f9;
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-role-badge {
+    color: #94a3b8;
+    font-size: 9.5px;
+    font-weight: 500;
 }
 
 .logout-btn {
     width: 100%;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     border: none;
-    color: white;
+    color: #ffffff;
     padding: 10px 12px;
     border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     font-size: 13px;
     font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
 }
 
 .logout-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.45);
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
 }
 
 .logout-icon {
-    width: 28px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.logout-icon i {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Mobile Overlay */
@@ -462,400 +540,117 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 999;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9998;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
 .mobile-overlay.show {
-    display: block;
-    animation: fadeIn 0.3s ease;
+    display: block !important;
+    opacity: 1 !important;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
+/* Mobile & Tablet Drawer Rules */
+@media (max-width: 992px) {
     .mobile-menu-toggle {
-        display: block;
+        display: block !important;
     }
     
     .close-btn {
-        display: flex;
+        display: flex !important;
     }
     
     .modern-sidebar {
-        width: 100%;
-        transform: translateX(-100%);
+        width: 270px;
+        transform: translateX(-100%) !important;
+        box-shadow: none;
     }
     
     .modern-sidebar.show {
-        transform: translateX(0);
+        transform: translateX(0) !important;
+        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.6) !important;
     }
-    
-    .sidebar-header {
-        padding: 25px 20px 20px;
-    }
-    
-    .logo-container {
-        gap: 12px;
-    }
-    
-    .logo-icon {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .logo-icon i {
-        font-size: 20px;
-    }
-    
-    .logo-text h1 {
-        font-size: 18px;
-    }
-    
-    .sidebar-nav {
-        padding: 20px 15px;
-    }
-    
-    .nav-link {
-        padding: 18px 20px;
-        margin-bottom: 10px;
-    }
-
-    .nav-icon {
-        width: 45px;
-        height: 45px;
-        margin-right: 18px;
-    }
-    
-    .nav-icon i {
-        font-size: 20px;
-    }
-    
-    .nav-text {
-        font-size: 16px;
-    }
-
-    .sidebar-footer {
-        padding: 15px;
-    }
-
-    .logout-btn {
-        padding: 18px 20px;
-        font-size: 16px;
-    }
-    
-    .logout-icon {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .logout-icon i {
-        font-size: 18px;
-    }
-}
-
-/* Tablet Styles */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .modern-sidebar {
-        width: 220px;
-    }
-    
-    .sidebar-header {
-        padding: 18px 15px;
-    }
-    
-    .logo-text h1 {
-        font-size: 15px;
-    }
-    
-    .nav-link {
-        padding: 12px 14px;
-    }
-    
-    .nav-icon {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .nav-icon i {
-        font-size: 15px;
-    }
-    
-    .nav-text {
-        font-size: 13px;
-    }
-}
-
-/* Animations */
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.nav-item {
-    animation: slideInUp 0.4s ease-out;
-}
-
-.nav-item:nth-child(1) { animation-delay: 0.1s; }
-.nav-item:nth-child(2) { animation-delay: 0.15s; }
-.nav-item:nth-child(3) { animation-delay: 0.2s; }
-.nav-item:nth-child(4) { animation-delay: 0.25s; }
-.nav-item:nth-child(5) { animation-delay: 0.3s; }
-.nav-item:nth-child(6) { animation-delay: 0.35s; }
-.nav-item:nth-child(7) { animation-delay: 0.4s; }
-.nav-item:nth-child(8) { animation-delay: 0.45s; }
-
-/* Accessibility */
-.nav-link:focus,
-.logout-btn:focus,
-.hamburger-btn:focus {
-    outline: 2px solid #667eea;
-    outline-offset: 2px;
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-    .nav-item {
-        animation: none;
-    }
-    
-    .nav-link:hover,
-    .logout-btn:hover,
-    .hamburger-btn:hover {
-        transform: none;
-    }
-    
-    .modern-sidebar {
-        transition: none;
-    }
-}
-
-/* Scrollbar Styling */
-.modern-sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.modern-sidebar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.modern-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-}
-
-.modern-sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
 }
 </style>
 
 <script>
-// Modern Mobile Menu Functionality
-function toggleMobileMenu() {
+window.toggleMobileMenu = function() {
     const sidebar = document.getElementById('userSidebar');
     const overlay = document.getElementById('mobileOverlay');
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
     
-    if (sidebar.classList.contains('show')) {
-        closeMobileMenu();
+    if (sidebar && sidebar.classList.contains('show')) {
+        window.closeMobileMenu();
     } else {
-        openMobileMenu();
+        window.openMobileMenu();
     }
-}
+};
 
-function openMobileMenu() {
+window.openMobileMenu = function() {
     const sidebar = document.getElementById('userSidebar');
     const overlay = document.getElementById('mobileOverlay');
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
     
-    sidebar.classList.add('show');
-    overlay.classList.add('show');
-    hamburgerBtn.classList.add('active');
+    if (sidebar) sidebar.classList.add('show');
+    if (overlay) overlay.classList.add('show');
+    if (hamburgerBtn) hamburgerBtn.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
-    // Add smooth animation
-    sidebar.style.transform = 'translateX(0)';
-    overlay.style.display = 'block';
-    setTimeout(() => {
-        overlay.style.opacity = '1';
-    }, 10);
-}
+};
 
-function closeMobileMenu() {
+window.closeMobileMenu = function() {
     const sidebar = document.getElementById('userSidebar');
     const overlay = document.getElementById('mobileOverlay');
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
     
-    sidebar.classList.remove('show');
-    overlay.classList.remove('show');
-    hamburgerBtn.classList.remove('active');
+    if (sidebar) sidebar.classList.remove('show');
+    if (overlay) overlay.classList.remove('show');
+    if (hamburgerBtn) hamburgerBtn.classList.remove('active');
     document.body.style.overflow = 'auto';
-    
-    // Add smooth animation
-    overlay.style.opacity = '0';
-    setTimeout(() => {
-        overlay.style.display = 'none';
-        sidebar.style.transform = 'translateX(-100%)';
-    }, 300);
-}
+};
 
-// Enhanced Event Listeners
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const logoutForm = document.getElementById('logoutForm');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const closeBtn = document.querySelector('.close-btn');
-    
-    // Close menu when clicking on nav links (mobile)
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                closeMobileMenu();
-            }
-        });
-    });
-    
-    // Close button functionality
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeMobileMenu);
-    }
-    
-    // Close menu on overlay click
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
     const overlay = document.getElementById('mobileOverlay');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.toggleMobileMenu();
+        });
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.closeMobileMenu();
+        });
+    }
+    
     if (overlay) {
-        overlay.addEventListener('click', closeMobileMenu);
+        overlay.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.closeMobileMenu();
+        });
     }
     
-    // Close menu on window resize
+    // Close on window resize if larger than 992px
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            closeMobileMenu();
+        if (window.innerWidth > 992) {
+            window.closeMobileMenu();
         }
     });
     
-    // Enhanced logout functionality
-    if (logoutForm && logoutBtn) {
-        logoutForm.addEventListener('submit', function(e) {
-            // Show loading state with modern animation
-            const originalContent = logoutBtn.innerHTML;
-            logoutBtn.innerHTML = `
-                <div class="logout-icon">
-                    <i class="fas fa-spinner fa-spin"></i>
-                </div>
-                <span class="logout-text">Logging out...</span>
-            `;
-            logoutBtn.disabled = true;
-            logoutBtn.style.opacity = '0.7';
-            
-            // Add loading animation
-            logoutBtn.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                logoutBtn.style.transform = 'scale(1)';
-            }, 100);
-        });
-    }
-    
-    // Add smooth scroll behavior for sidebar
-    const sidebar = document.getElementById('userSidebar');
-    if (sidebar) {
-        sidebar.style.scrollBehavior = 'smooth';
-    }
-    
-    // Add keyboard navigation support
+    // Escape key listener
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && window.innerWidth <= 768) {
-            closeMobileMenu();
+        if (e.key === 'Escape') {
+            window.closeMobileMenu();
         }
     });
-    
-    // Add touch gesture support for mobile
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-    
-    if (window.innerWidth <= 768) {
-        document.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        });
-        
-        document.addEventListener('touchmove', function(e) {
-            if (!isDragging) return;
-            currentX = e.touches[0].clientX;
-            const diffX = startX - currentX;
-            
-            // Swipe right to close menu
-            if (diffX < -50 && sidebar.classList.contains('show')) {
-                closeMobileMenu();
-                isDragging = false;
-            }
-        });
-        
-        document.addEventListener('touchend', function() {
-            isDragging = false;
-        });
-    }
-    
-    // Add intersection observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observe nav items for animation
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = `opacity 0.4s ease ${index * 0.1}s, transform 0.4s ease ${index * 0.1}s`;
-        observer.observe(item);
-    });
-    
-    // Initialize mobile menu visibility
-    if (window.innerWidth <= 768) {
-        const menuToggle = document.getElementById('mobileMenuToggle');
-        if (menuToggle) {
-            menuToggle.style.display = 'block';
-        }
-    }
-});
-
-// Add smooth page transitions
-window.addEventListener('beforeunload', function() {
-    document.body.style.opacity = '0.8';
-});
-
-// Performance optimization: Debounce resize events
-let resizeTimeout;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function() {
-        if (window.innerWidth > 768) {
-            closeMobileMenu();
-        }
-    }, 250);
 });
 </script>

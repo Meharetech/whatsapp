@@ -170,24 +170,66 @@ def update_assembly(assembly_id):
 @login_required
 @admin_required
 def delete_assembly(assembly_id):
-    """Delete an assembly"""
+    """Permanently delete an assembly and all associated data, groups, files, and scheduled posts"""
     try:
-        assembly = Assembly.query.get_or_404(assembly_id)
+        import shutil
+        from models.user import PostSchedule, PostScheduleGroup
         
-        # Soft delete by setting is_active to False
-        assembly.is_active = False
+        assembly = Assembly.query.get_or_404(assembly_id)
+        assembly_name = assembly.name
+        
+        # 1. Delete associated PostSchedule & PostScheduleGroup records
+        scheduled_posts = PostSchedule.query.filter_by(assembly_id=assembly.id).all()
+        for post in scheduled_posts:
+            # Delete media files from disk if any
+            for file_attr in ['image_file', 'audio_file', 'video_file', 'completion_file']:
+                file_rel = getattr(post, file_attr, None)
+                if file_rel:
+                    full_path = os.path.join('database', file_rel)
+                    if os.path.exists(full_path) and os.path.isfile(full_path):
+                        try:
+                            os.remove(full_path)
+                        except Exception:
+                            pass
+            db.session.delete(post)
+            
+        # Delete PostScheduleGroup entries matching assembly_name
+        PostScheduleGroup.query.filter_by(assembly_name=assembly_name).delete(synchronize_session=False)
+        
+        # 2. Hard delete the Assembly record itself from database
+        db.session.delete(assembly)
         db.session.commit()
         
+        # 3. Purge all physical folders and files from disk
+        possible_dirs = [
+            os.path.join('database', assembly_name),
+            os.path.join('uploads', assembly_name),
+            os.path.join('uploads', f'assembly_{assembly_name}'),
+            os.path.join('static', 'assembly_excel', assembly_name),
+            os.path.join('excel_files', assembly_name),
+            os.path.join('csv_files', assembly_name)
+        ]
+        
+        for dir_path in possible_dirs:
+            if os.path.exists(dir_path):
+                try:
+                    if os.path.isdir(dir_path):
+                        shutil.rmtree(dir_path)
+                    else:
+                        os.remove(dir_path)
+                except Exception as err:
+                    print(f"Warning: Could not remove directory/file {dir_path}: {err}")
+                    
         return jsonify({
             'success': True,
-            'message': 'Assembly deleted successfully'
+            'message': f'Assembly "{assembly_name}" and all associated group details, files, and materials were permanently deleted.'
         })
         
     except Exception as e:
         db.session.rollback()
         return jsonify({
             'success': False,
-            'message': str(e)
+            'message': f'Failed to delete assembly: {str(e)}'
         }), 500
 
 # ============================================================================
@@ -540,6 +582,75 @@ def upload_reports():
         return jsonify({
             'success': False,
             'message': f'Upload failed: {str(e)}'
+        }), 500
+
+# ============================================================================
+# ASSEMBLY FILES LIST & DELETE API
+# ============================================================================
+
+@api_bp.route('/assembly-files/<assembly_name>', methods=['GET'])
+@login_required
+@admin_required
+def get_assembly_files(assembly_name):
+    """List all group files (original and converted) for a specific assembly"""
+    try:
+        # Sanitize assembly name to prevent directory traversal
+        assembly_name = os.path.basename(assembly_name)
+        assembly_path = os.path.join('database', assembly_name, 'groups')
+        
+        files = []
+        if os.path.exists(assembly_path):
+            for filename in os.listdir(assembly_path):
+                file_path = os.path.join(assembly_path, filename)
+                if os.path.isfile(file_path):
+                    file_stat = os.stat(file_path)
+                    files.append({
+                        'filename': filename,
+                        'size': file_stat.st_size,
+                        'last_modified': datetime.fromtimestamp(file_stat.st_mtime).isoformat()
+                    })
+        
+        # Sort files by last modified date (newest first)
+        files.sort(key=lambda x: x['last_modified'], reverse=True)
+        
+        return jsonify({
+            'success': True,
+            'files': files
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': str(e)
+        }), 500
+
+@api_bp.route('/assembly-files/<assembly_name>/<filename>', methods=['DELETE'])
+@login_required
+@admin_required
+def delete_assembly_file(assembly_name, filename):
+    """Delete a specific group file from the assembly"""
+    try:
+        # Sanitize parameters to prevent path traversal
+        assembly_name = os.path.basename(assembly_name)
+        filename = os.path.basename(filename)
+        
+        file_path = os.path.join('database', assembly_name, 'groups', filename)
+        
+        if not os.path.exists(file_path):
+            return jsonify({
+                'success': False,
+                'message': 'File not found'
+            }), 404
+            
+        os.remove(file_path)
+        
+        return jsonify({
+            'success': True,
+            'message': f'File {filename} deleted successfully'
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': str(e)
         }), 500
 
 # ============================================================================

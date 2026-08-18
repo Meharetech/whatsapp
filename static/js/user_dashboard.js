@@ -149,21 +149,42 @@ function displayAssemblyBreakdown(assemblies) {
     container.innerHTML = html;
 }
 
+// Real-time assembly & group filtering
+function filterAssemblies(query) {
+    const search = query.trim().toLowerCase();
+    const cards = document.querySelectorAll('.assembly-card');
+    
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(search)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
 // Toggle assembly details
 function toggleAssemblyDetails(assemblyId) {
     const breakdown = document.getElementById(`breakdown-${assemblyId}`);
     const toggleIcon = document.getElementById(`toggle-icon-${assemblyId}`);
     
-    if (breakdown.style.display === 'none') {
+    if (!breakdown) return;
+    
+    if (breakdown.style.display === 'none' || !breakdown.style.display) {
         // Show breakdown
         breakdown.style.display = 'block';
-        toggleIcon.classList.remove('fa-chevron-down');
-        toggleIcon.classList.add('fa-chevron-up');
+        if (toggleIcon) {
+            toggleIcon.classList.remove('fa-chevron-down');
+            toggleIcon.classList.add('fa-chevron-up');
+        }
     } else {
         // Hide breakdown
         breakdown.style.display = 'none';
-        toggleIcon.classList.remove('fa-chevron-up');
-        toggleIcon.classList.add('fa-chevron-down');
+        if (toggleIcon) {
+            toggleIcon.classList.remove('fa-chevron-up');
+            toggleIcon.classList.add('fa-chevron-down');
+        }
     }
 }
 

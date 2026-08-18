@@ -1,9 +1,10 @@
-// Modern Post Scheduling JavaScript - Enhanced UI
+// Modern Post Scheduling & Daily Reports JavaScript - Enhanced UI
 let selectedAssemblies = [];
 let availableCsvFiles = {};
 let selectedCsvFiles = [];
 let currentStep = 1;
 let filteredGroups = [];
+let allScheduledPostsData = [];
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,15 +14,26 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFormSubmission();
     updateQuickStats();
     
-    // Set default date to tomorrow
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    document.getElementById('scheduled_date').value = tomorrow.toISOString().split('T')[0];
+    // Set default schedule date and time
+    const today = new Date();
+    const dateInput = document.getElementById('scheduled_date');
+    if (dateInput) {
+        dateInput.value = today.toISOString().split('T')[0];
+    }
     
-    // Set default time to current time + 1 hour
-    const now = new Date();
-    now.setHours(now.getHours() + 1);
-    document.getElementById('scheduled_time').value = now.toTimeString().slice(0, 5);
+    const timeInput = document.getElementById('scheduled_time');
+    if (timeInput) {
+        timeInput.value = today.toTimeString().slice(0, 5);
+    }
+
+    // Set default date picker for Daily Reports filter
+    const reportDatePicker = document.getElementById('reportDatePicker');
+    if (reportDatePicker) {
+        reportDatePicker.value = today.toISOString().split('T')[0];
+        reportDatePicker.addEventListener('change', function() {
+            filterDailyReportsByDate(this.value);
+        });
+    }
 });
 
 // Setup event listeners
@@ -754,9 +766,34 @@ async function loadScheduledPosts() {
         const data = await response.json();
         
         if (data.success) {
-            displayScheduledPosts(data.posts);
-            // Update quick stats with scheduled posts count
-            document.getElementById('quickScheduledPosts').textContent = data.posts.length;
+            allScheduledPostsData = data.posts || [];
+            displayScheduledPosts(allScheduledPostsData);
+            
+            // Compute pending & running active posts
+            const pendingPosts = allScheduledPostsData.filter(p => {
+                const s = (p.status || '').toLowerCase();
+                return s === 'pending' || s === 'running';
+            });
+            const pendingCount = pendingPosts.length;
+
+            // Update header quick-stat pills
+            const countElem = document.getElementById('quickScheduledPosts');
+            if (countElem) countElem.textContent = allScheduledPostsData.length;
+
+            const pendingElem = document.getElementById('quickPendingPosts');
+            if (pendingElem) pendingElem.textContent = pendingCount;
+
+            // Update Pending tab badge
+            const pendingTabBadge = document.getElementById('pendingTabBadge');
+            if (pendingTabBadge) pendingTabBadge.textContent = pendingCount;
+
+            // Update Pending Tasks view stats
+            updatePendingTasksView(pendingPosts);
+
+            // Render Daily Reports based on current date picker selection
+            const reportDatePicker = document.getElementById('reportDatePicker');
+            const currentDateFilter = reportDatePicker ? reportDatePicker.value : '';
+            filterDailyReportsByDate(currentDateFilter);
         } else {
             showError('Failed to load scheduled posts: ' + data.message);
         }
@@ -765,12 +802,291 @@ async function loadScheduledPosts() {
     }
 }
 
+// Update Pending Tasks view — stats and list
+function updatePendingTasksView(pendingPosts) {
+    // Big count badge
+    const bigCount = document.getElementById('pendingCountBig');
+    if (bigCount) bigCount.textContent = pendingPosts.length;
+
+    // Total groups queued — target_groups items are objects {id, group_name, assembly_name}
+    let totalGroupsQueued = 0;
+    pendingPosts.forEach(p => {
+        const grpCount = Array.isArray(p.target_groups) ? p.target_groups.length : 0;
+        totalGroupsQueued += grpCount > 0 ? grpCount : 1;
+    });
+
+    const totalCountEl = document.getElementById('pendingTotalCount');
+    if (totalCountEl) totalCountEl.textContent = pendingPosts.length;
+
+    const totalGroupsEl = document.getElementById('pendingTotalGroups');
+    if (totalGroupsEl) totalGroupsEl.textContent = totalGroupsQueued;
+
+    // Next scheduled date (earliest pending)
+    const nextDateEl = document.getElementById('pendingNextDate');
+    if (nextDateEl) {
+        if (pendingPosts.length > 0) {
+            const sorted = [...pendingPosts].sort((a, b) => {
+                const da = new Date(a.scheduled_date + 'T' + (a.scheduled_time || '00:00'));
+                const db = new Date(b.scheduled_date + 'T' + (b.scheduled_time || '00:00'));
+                return da - db;
+            });
+            nextDateEl.textContent = sorted[0].scheduled_date + ' ' + (sorted[0].scheduled_time || '');
+        } else {
+            nextDateEl.textContent = '—';
+        }
+    }
+
+    // Render pending posts list
+    const listContainer = document.getElementById('pendingPostsList');
+    if (!listContainer) return;
+
+    if (pendingPosts.length === 0) {
+        listContainer.innerHTML = `
+            <div class="no-data-card" style="margin: 16px;">
+                <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                <p>No pending tasks! All broadcasts are complete.</p>
+                <small>Schedule a new broadcast to see it appear here.</small>
+            </div>
+        `;
+        return;
+    }
+
+    let html = `
+        <div class="posts-list-header">
+            <div class="post-header-row pending-row-grid">
+                <div class="post-header-cell">Title</div>
+                <div class="post-header-cell">Scheduled Date/Time</div>
+                <div class="post-header-cell">Groups</div>
+                <div class="post-header-cell">Message Preview</div>
+                <div class="post-header-cell">Content</div>
+                <div class="post-header-cell">Status &amp; Timer</div>
+                <div class="post-header-cell">Action</div>
+            </div>
+        </div>
+        <div class="posts-list-body">
+    `;
+
+    pendingPosts.forEach(post => {
+        const scheduledDateTime = new Date(post.scheduled_date + 'T' + (post.scheduled_time || '00:00'));
+        const groupsCount = (Array.isArray(post.target_groups) && post.target_groups.length) ? post.target_groups.length : 1;
+        const contentTypes = [];
+        if (post.image_file) contentTypes.push('Image');
+        if (post.audio_file) contentTypes.push('Audio');
+        if (post.video_file) contentTypes.push('Video');
+        const contentText = contentTypes.length > 0 ? contentTypes.join(', ') : 'Text Only';
+
+        const statusClass = (post.status || 'pending').toLowerCase();
+        let statusBadgeHtml = '';
+        if (statusClass === 'running') {
+            statusBadgeHtml = `<span class="status-badge running" title="3 Hours Processing Window"><i class="fas fa-bolt"></i> RUNNING</span>`;
+        } else {
+            statusBadgeHtml = `<span class="status-badge pending"><i class="fas fa-clock"></i> PENDING</span>`;
+        }
+
+        const countdownBadge = getTaskCountdownHtml(post);
+
+        html += `
+            <div class="post-list-row status-${statusClass} pending-row-grid">
+                <div class="post-cell title-cell">${post.title || '—'}</div>
+                <div class="post-cell date-cell">${formatDateTime(scheduledDateTime)}</div>
+                <div class="post-cell">${groupsCount} group${groupsCount !== 1 ? 's' : ''}</div>
+                <div class="post-cell message-cell">${post.message_text ? post.message_text.substring(0, 45) + (post.message_text.length > 45 ? '…' : '') : 'No message'}</div>
+                <div class="post-cell">${contentText}</div>
+                <div class="post-cell">
+                    ${statusBadgeHtml}
+                    ${countdownBadge ? `<div style="margin-top: 4px;">${countdownBadge}</div>` : ''}
+                </div>
+                <div class="post-cell">
+                    <button class="btn btn-sm btn-danger" onclick="confirmDeletePost(${post.id}, '${post.title}')">
+                        <i class="fas fa-trash"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+
+    html += '</div>';
+    listContainer.innerHTML = html;
+}
+
+// Switch between tab views
+function switchViewTab(tabId) {
+    document.querySelectorAll('.view-tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-view-content').forEach(view => view.style.display = 'none');
+
+    const activeBtn = document.querySelector(`.view-tab-btn[onclick="switchViewTab('${tabId}')"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    const activeView = document.getElementById(tabId);
+    if (activeView) activeView.style.display = 'block';
+}
+
+// Filter daily task reports by date
+function filterDailyReportsByDate(selectedDateStr) {
+    if (!allScheduledPostsData) return;
+
+    let filteredPosts = allScheduledPostsData;
+    if (selectedDateStr) {
+        filteredPosts = allScheduledPostsData.filter(post => {
+            if (!post.scheduled_date) return false;
+            return post.scheduled_date === selectedDateStr;
+        });
+    }
+
+    displayDailyTaskReports(filteredPosts, selectedDateStr);
+}
+
+// Render Daily Task Reports with Delivery Progress & Detailed Broadcast Logs
+function displayDailyTaskReports(posts, selectedDateStr) {
+    const reportContainer = document.getElementById('dailyReportsList');
+    const totalGroupsMetric = document.getElementById('reportTotalGroups');
+    const totalMessagesMetric = document.getElementById('reportTotalMessages');
+    const successRateMetric = document.getElementById('reportSuccessRate');
+    const progressFill = document.getElementById('reportProgressFill');
+
+    if (!reportContainer) return;
+
+    let totalGroups = 0;
+    let completedGroups = 0;
+    let totalMessagesSent = 0;
+
+    posts.forEach(post => {
+        const groupsCount = (Array.isArray(post.target_groups) && post.target_groups.length) ? post.target_groups.length : 1;
+        totalGroups += groupsCount;
+        if (post.status === 'completed') {
+            completedGroups += groupsCount;
+            totalMessagesSent += groupsCount;
+        } else if (post.status === 'sending' || post.status === 'in_progress') {
+            completedGroups += Math.floor(groupsCount * 0.5);
+            totalMessagesSent += Math.floor(groupsCount * 0.5);
+        }
+    });
+
+    const successPercent = totalGroups > 0 ? Math.round((completedGroups / totalGroups) * 100) : 100;
+
+    if (totalGroupsMetric) totalGroupsMetric.textContent = totalGroups;
+    if (totalMessagesMetric) totalMessagesMetric.textContent = totalMessagesSent;
+    if (successRateMetric) successRateMetric.textContent = `${successPercent}%`;
+    if (progressFill) progressFill.style.width = `${successPercent}%`;
+
+    if (posts.length === 0) {
+        reportContainer.innerHTML = `
+            <div class="no-data-card">
+                <i class="fas fa-calendar-times"></i>
+                <p>No broadcast activity logs found for <strong>${selectedDateStr || 'the selected date'}</strong>.</p>
+                <small>Select a different date or schedule a new broadcast campaign to see execution logs.</small>
+            </div>
+        `;
+        return;
+    }
+
+    let html = '';
+    posts.forEach(post => {
+        const targetGroupsList = (post.target_groups && post.target_groups.length > 0)
+            ? post.target_groups.map(g => {
+                const name = (typeof g === 'string') ? g : (g.group_name || g.assembly_name || '');
+                return name.replace(/\.csv$/i, '');
+              }).join(', ')
+            : 'Default Assembly Group';
+
+        const groupsCount = (Array.isArray(post.target_groups) && post.target_groups.length) ? post.target_groups.length : 1;
+        const progressVal = post.status === 'completed' ? 100 : (post.status === 'failed' ? 0 : 50);
+
+        const statusClass = (post.status || 'pending').toLowerCase();
+        let statusBadgeHtml = `<span class="status-badge ${statusClass}">${statusClass.toUpperCase()}</span>`;
+        let runningBannerHtml = '';
+        const countdownBadge = getTaskCountdownHtml(post);
+
+        if (statusClass === 'running') {
+            statusBadgeHtml = `<span class="status-badge running" title="3 Hours Execution Window Active"><i class="fas fa-bolt"></i> RUNNING (3h Time)</span>`;
+            runningBannerHtml = `
+                <div class="running-info-banner" style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.28); color: #4338ca; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 16px; color: #6366f1;"></i>
+                        <div>
+                            <strong>Task Execution Active (3 Hours Processing Window)</strong>
+                            <div style="margin-top: 2px; font-size: 11px; font-weight: 500; opacity: 0.9;">Admin has initiated message sending. Active processing window: 3 Hours maximum.</div>
+                        </div>
+                    </div>
+                    ${countdownBadge}
+                </div>
+            `;
+        }
+
+        html += `
+            <div class="daily-report-card">
+                <div class="report-card-header">
+                    <div class="report-title-info">
+                        <div class="report-icon-badge">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>${post.title || 'Untitled Broadcast'}</h4>
+                            <span class="report-timestamp"><i class="fas fa-clock"></i> Scheduled: ${post.scheduled_date} at ${post.scheduled_time}</span>
+                        </div>
+                    </div>
+                    ${statusBadgeHtml}
+                </div>
+                
+                <div class="report-card-body">
+                    ${runningBannerHtml}
+                    <div class="message-preview-box">
+                        <div class="box-label"><i class="fas fa-quote-left"></i> Broadcast Message Content:</div>
+                        <p class="message-text-content">${post.message_text ? post.message_text : '<em>No text message provided (Media broadcast)</em>'}</p>
+                    </div>
+
+                    <div class="report-metrics-grid">
+                        <div class="report-metric">
+                            <span class="metric-lbl">Target Groups</span>
+                            <span class="metric-val"><i class="fas fa-users"></i> ${groupsCount} Groups</span>
+                        </div>
+                        <div class="report-metric">
+                            <span class="metric-lbl">Sent Progress</span>
+                            <span class="metric-val">${progressVal}% Delivered</span>
+                        </div>
+                        <div class="report-metric">
+                            <span class="metric-lbl">Media Attachments</span>
+                            <span class="metric-val">
+                                ${post.image_file ? '<i class="fas fa-image" title="Image"></i> ' : ''}
+                                ${post.audio_file ? '<i class="fas fa-music" title="Audio"></i> ' : ''}
+                                ${post.video_file ? '<i class="fas fa-video" title="Video"></i> ' : ''}
+                                ${(!post.image_file && !post.audio_file && !post.video_file) ? 'Text Only' : ''}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="delivery-progress-bar-container">
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" style="width: ${progressVal}%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="groups-breakdown-tag">
+                        <strong><i class="fas fa-layer-group"></i> Target Group Files:</strong> ${targetGroupsList}
+                    </div>
+                </div>
+
+                ${post.completion_file ? `
+                    <div class="report-card-footer">
+                        <button class="btn btn-sm btn-outline-success" onclick="downloadCompletionFile(${post.id})">
+                            <i class="fas fa-download"></i> Download Full Delivery Report (.xlsx)
+                        </button>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    });
+
+    reportContainer.innerHTML = html;
+}
+
 // Display scheduled posts
 function displayScheduledPosts(posts) {
     const container = document.getElementById('scheduledPosts');
+    if (!container) return;
     
-    if (posts.length === 0) {
-        container.innerHTML = '<p class="no-data">No scheduled posts found.</p>';
+    if (!posts || posts.length === 0) {
+        container.innerHTML = '<div class="no-data-card" style="margin:16px;"><i class="fas fa-inbox"></i><p>No scheduled posts found.</p><small>Create a broadcast campaign using the wizard above.</small></div>';
         return;
     }
     
@@ -779,7 +1095,7 @@ function displayScheduledPosts(posts) {
             <div class="post-header-row">
                 <div class="post-header-cell">Title</div>
                 <div class="post-header-cell">Scheduled Date/Time</div>
-                <div class="post-header-cell">Excel Files</div>
+                <div class="post-header-cell">Groups</div>
                 <div class="post-header-cell">Message</div>
                 <div class="post-header-cell">Content</div>
                 <div class="post-header-cell">Status</div>
@@ -789,8 +1105,11 @@ function displayScheduledPosts(posts) {
     `;
     
     posts.forEach(post => {
-        const scheduledDateTime = new Date(post.scheduled_date + 'T' + post.scheduled_time);
-        const isPast = scheduledDateTime < new Date();
+        const timeStr = post.scheduled_time || '00:00';
+        const scheduledDateTime = new Date(post.scheduled_date + 'T' + timeStr);
+        
+        // target_groups is an array of objects {id, group_name, assembly_name}
+        const groupsCount = Array.isArray(post.target_groups) ? post.target_groups.length : 0;
         
         // Get content types
         const contentTypes = [];
@@ -799,22 +1118,24 @@ function displayScheduledPosts(posts) {
         if (post.video_file) contentTypes.push('Video');
         const contentText = contentTypes.length > 0 ? contentTypes.join(', ') : 'Text Only';
         
+        const statusClass = (post.status || 'pending').toLowerCase();
+        
         html += `
-            <div class="post-list-row status-${post.status}">
-                <div class="post-cell title-cell" data-label="Title">${post.title}</div>
+            <div class="post-list-row status-${statusClass}">
+                <div class="post-cell title-cell" data-label="Title">${post.title || '—'}</div>
                 <div class="post-cell date-cell" data-label="Scheduled">${formatDateTime(scheduledDateTime)}</div>
-                <div class="post-cell files-cell" data-label="Files">${post.target_groups.length}</div>
+                <div class="post-cell files-cell" data-label="Groups">${groupsCount} group${groupsCount !== 1 ? 's' : ''}</div>
                 <div class="post-cell message-cell" data-label="Message">${post.message_text ? post.message_text.substring(0, 50) + (post.message_text.length > 50 ? '...' : '') : 'No message'}</div>
                 <div class="post-cell content-cell" data-label="Content">${contentText}</div>
                 <div class="post-cell status-cell" data-label="Status">
-                    <span class="status-badge ${post.status}">${post.status.toUpperCase()}</span>
-                    ${post.status === 'completed' && post.completion_file ? 
-                        `<br><button class="btn btn-sm btn-outline-success" onclick="downloadCompletionFile(${post.id})" title="Download Completion File">
-                            <i class="fas fa-download"></i> Completion File
+                    <span class="status-badge ${statusClass}">${statusClass.toUpperCase()}</span>
+                    ${statusClass === 'completed' && post.completion_file ? 
+                        `<br><button class="btn btn-sm btn-outline" onclick="downloadCompletionFile(${post.id})" title="Download Completion File">
+                            <i class="fas fa-download"></i> Report
                         </button>` : ''
                     }
-                    ${post.status.toLowerCase() === 'pending' ? 
-                        `<br><button class="btn btn-sm btn-outline-danger" onclick="confirmDeletePost(${post.id}, '${post.title}')" title="Delete Post">
+                    ${statusClass === 'pending' ? 
+                        `<br><button class="btn btn-sm btn-danger" onclick="confirmDeletePost(${post.id}, '${post.title}')" title="Delete Post">
                             <i class="fas fa-trash"></i> Delete
                         </button>` : ''
                     }
@@ -1040,7 +1361,102 @@ async function deletePost() {
     } finally {
         // Reset button state
         const deleteBtn = document.querySelector('#deleteConfirmModal .btn-danger');
-        deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete Post';
-        deleteBtn.disabled = false;
+        if (deleteBtn) {
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+            deleteBtn.disabled = false;
+        }
     }
 }
+
+// Countdown timer helper for pending and running posts
+function getTaskCountdownHtml(post) {
+    const status = (post.status || 'pending').toLowerCase();
+    
+    if (status === 'running') {
+        // 3-hour running execution window countdown
+        let startTime = new Date();
+        if (post.updated_at) {
+            startTime = new Date(post.updated_at);
+        } else if (post.scheduled_date && post.scheduled_time) {
+            startTime = new Date(post.scheduled_date + 'T' + post.scheduled_time);
+        }
+        
+        const endTime = new Date(startTime.getTime() + (3 * 60 * 60 * 1000)); // +3 Hours Window
+        const now = new Date();
+        const diffMs = endTime - now;
+        
+        if (diffMs > 0) {
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+            const pad = n => String(n).padStart(2, '0');
+            return `<span class="timer-countdown-badge running-timer" data-end-time="${endTime.getTime()}"><i class="fas fa-hourglass-half fa-spin"></i> 3h Window: ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s left</span>`;
+        } else {
+            return `<span class="timer-countdown-badge running-timer"><i class="fas fa-bolt"></i> Running (3h Execution Active)</span>`;
+        }
+    } else if (status === 'pending') {
+        // Pending countdown to scheduled time
+        if (post.scheduled_date) {
+            const timeStr = post.scheduled_time || '00:00';
+            const scheduledTarget = new Date(post.scheduled_date + 'T' + timeStr);
+            const now = new Date();
+            const diffMs = scheduledTarget - now;
+            
+            if (diffMs > 0) {
+                const hours = Math.floor(diffMs / (1000 * 60 * 60));
+                const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+                const pad = n => String(n).padStart(2, '0');
+                if (hours >= 24) {
+                    const days = Math.floor(hours / 24);
+                    const remHours = hours % 24;
+                    return `<span class="timer-countdown-badge pending-timer" data-target-time="${scheduledTarget.getTime()}"><i class="fas fa-clock"></i> In ${days}d ${remHours}h ${pad(mins)}m</span>`;
+                }
+                return `<span class="timer-countdown-badge pending-timer" data-target-time="${scheduledTarget.getTime()}"><i class="fas fa-clock"></i> In ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s</span>`;
+            } else {
+                return `<span class="timer-countdown-badge pending-timer past"><i class="fas fa-history"></i> Scheduled time reached</span>`;
+            }
+        }
+    }
+    return '';
+}
+
+// Start automatic 1-second interval loop for live timers
+setInterval(function updateLiveTimers() {
+    const pad = n => String(n).padStart(2, '0');
+    const now = new Date().getTime();
+
+    // Update running timers
+    document.querySelectorAll('.running-timer[data-end-time]').forEach(elem => {
+        const endTime = parseInt(elem.getAttribute('data-end-time'), 10);
+        const diffMs = endTime - now;
+        if (diffMs > 0) {
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+            elem.innerHTML = `<i class="fas fa-hourglass-half fa-spin"></i> 3h Window: ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s left`;
+        } else {
+            elem.innerHTML = `<i class="fas fa-bolt"></i> Running (3h Execution Active)`;
+        }
+    });
+
+    // Update pending timers
+    document.querySelectorAll('.pending-timer[data-target-time]').forEach(elem => {
+        const targetTime = parseInt(elem.getAttribute('data-target-time'), 10);
+        const diffMs = targetTime - now;
+        if (diffMs > 0) {
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+            if (hours >= 24) {
+                const days = Math.floor(hours / 24);
+                const remHours = hours % 24;
+                elem.innerHTML = `<i class="fas fa-clock"></i> In ${days}d ${remHours}h ${pad(mins)}m`;
+            } else {
+                elem.innerHTML = `<i class="fas fa-clock"></i> In ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s`;
+            }
+        } else {
+            elem.innerHTML = `<i class="fas fa-history"></i> Scheduled time reached`;
+        }
+    });
+}, 1000);

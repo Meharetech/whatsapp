@@ -1,129 +1,138 @@
 {% extends "base.html" %}
 
-{% block title %}Post Sending Groups - WhatsApp Analytics{% endblock %}
+{% block title %}Post Sending & Daily Task Reports - WhatsApp Analytics{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/post_sending_groups.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="dashboard-layout">
-    <!-- Include User Left Sidebar from Layout File -->
-    {% include 'user_slidebar.html' %}
-    
-    <!-- Main Content Area -->
-    <div class="main-content">
-        <!-- Modern Header -->
-        <div class="modern-header">
-            <div class="header-content">
-                <div class="header-title">
-                    <h1><i class="fas fa-paper-plane"></i> Post Sending Groups</h1>
-                    <p class="header-subtitle">Schedule and manage posts for WhatsApp groups across assemblies</p>
-                </div>
-                <div class="header-stats">
-                    <div class="quick-stat">
-                        <span class="stat-value" id="quickSelectedAssemblies">0</span>
-                        <span class="stat-label">Assemblies</span>
-                    </div>
-                    <div class="quick-stat">
-                        <span class="stat-value" id="quickSelectedGroups">0</span>
-                        <span class="stat-label">Groups</span>
-                    </div>
-                    <div class="quick-stat">
-                        <span class="stat-value" id="quickScheduledPosts">0</span>
-                        <span class="stat-label">Scheduled</span>
-                    </div>
-                </div>
+{% include 'user_slidebar.html' %}
+
+<!-- ============================================================
+     MAIN CONTENT — inherits margin-left: 240px from base.html
+     ============================================================ -->
+<div class="main-content">
+
+    <!-- STICKY HEADER -->
+    <div class="modern-header">
+        <div class="header-content">
+            <div class="header-title">
+                <h1><i class="fas fa-paper-plane"></i> Post Sending &amp; Daily Reports</h1>
+                <p class="header-subtitle">Broadcast scheduled posts and track daily execution reports</p>
             </div>
-            <div class="header-actions">
-                <button class="action-btn refresh-btn" onclick="location.reload()" title="Refresh Page">
-                    <i class="fas fa-sync-alt"></i>
-                    <span>Refresh</span>
-                </button>
-                <button class="action-btn preview-btn" onclick="previewPost()" title="Preview Post">
-                    <i class="fas fa-eye"></i>
-                    <span>Preview</span>
-                </button>
+            <div class="header-stats">
+                <div class="quick-stat">
+                    <span class="stat-value" id="quickSelectedAssemblies">0</span>
+                    <span class="stat-label">Assemblies</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="stat-value" id="quickSelectedGroups">0</span>
+                    <span class="stat-label">Groups</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="stat-value" id="quickScheduledPosts">0</span>
+                    <span class="stat-label">Broadcasts</span>
+                </div>
+                <div class="quick-stat pending-stat">
+                    <span class="stat-value pending-val" id="quickPendingPosts">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
             </div>
         </div>
-        
-        <!-- Dashboard Content -->
-        <div class="dashboard-content">
-            <!-- Progress Steps -->
+        <div class="header-actions">
+            <button class="action-btn refresh-btn" onclick="location.reload()">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+            <button class="action-btn preview-btn" onclick="previewPost()">
+                <i class="fas fa-eye"></i> Preview
+            </button>
+        </div>
+    </div>
+
+    <!-- TAB SWITCHER -->
+    <div class="view-tabs-bar">
+        <div class="view-tabs-container">
+            <button class="view-tab-btn active" onclick="switchViewTab('campaignCreationView')">
+                <i class="fas fa-magic"></i> Create &amp; Schedule Broadcast
+            </button>
+            <button class="view-tab-btn pending-tab" onclick="switchViewTab('pendingTasksView')">
+                <i class="fas fa-hourglass-half"></i> Pending Tasks
+                <span class="tab-badge" id="pendingTabBadge">0</span>
+            </button>
+            <button class="view-tab-btn" onclick="switchViewTab('dailyReportsView')">
+                <i class="fas fa-chart-line"></i> Daily Task Reports &amp; Logs
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div class="dashboard-content">
+
+        <!-- ================================================
+             TAB 1: CAMPAIGN CREATION
+             ================================================ -->
+        <div class="tab-view-content" id="campaignCreationView" style="display:block;">
+
+            <!-- Wizard Steps -->
             <div class="progress-section">
                 <div class="section-header">
-                    <h2><i class="fas fa-route"></i> Post Creation Wizard</h2>
-                    <p>Follow these steps to create and schedule your post</p>
+                    <h2><i class="fas fa-route"></i> Broadcast Creation Wizard</h2>
+                    <p>Follow the steps below to compose and schedule your WhatsApp broadcast</p>
                 </div>
-                
                 <div class="progress-steps">
                     <div class="step active" id="step1">
-                        <div class="step-content">
-                            <div class="step-number">1</div>
-                            <div class="step-info">
-                                <h3>Select Assemblies</h3>
-                                <p>Choose the assemblies containing your target groups</p>
-                            </div>
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h3>Select Assemblies</h3>
+                            <p>Choose target assemblies</p>
                         </div>
-                        <div class="step-indicator"></div>
                     </div>
-                    
                     <div class="step" id="step2">
-                        <div class="step-content">
-                            <div class="step-number">2</div>
-                            <div class="step-info">
-                                <h3>Choose Groups</h3>
-                                <p>Select specific groups from CSV files</p>
-                            </div>
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h3>Choose Groups</h3>
+                            <p>Filter &amp; select CSV groups</p>
                         </div>
-                        <div class="step-indicator"></div>
                     </div>
-                    
                     <div class="step" id="step3">
-                        <div class="step-content">
-                            <div class="step-number">3</div>
-                            <div class="step-info">
-                                <h3>Schedule Post</h3>
-                                <p>Set content, media, and schedule</p>
-                            </div>
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h3>Compose &amp; Schedule</h3>
+                            <p>Set message and media</p>
                         </div>
-                        <div class="step-indicator"></div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Step 1: Assembly Selection -->
+
+            <!-- STEP 1: Assembly Selection -->
             <div class="form-section active" id="assemblySection">
                 <div class="section-card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3><i class="fas fa-building"></i> Assembly Selection</h3>
-                            <p>Choose the assemblies containing the groups you want to target</p>
+                            <h3><i class="fas fa-building"></i> 1. Select Target Assemblies</h3>
+                            <p>Choose assemblies containing the WhatsApp groups to target</p>
                         </div>
                         <div class="card-actions">
-                            <button type="button" class="btn btn-outline" onclick="selectAllAssemblies()">
-                                <i class="fas fa-check-double"></i> Select All
+                            <button type="button" class="btn btn-outline btn-sm" onclick="selectAllAssemblies()">
+                                <i class="fas fa-check-double"></i> All
                             </button>
-                            <button type="button" class="btn btn-outline" onclick="clearAllAssemblies()">
-                                <i class="fas fa-times"></i> Clear All
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="clearAllAssemblies()">
+                                <i class="fas fa-times"></i> Clear
                             </button>
                         </div>
                     </div>
-                    
                     <div class="card-content">
-                        <div class="assembly-selection" id="assemblySelection">
+                        <div id="assemblySelection">
                             <div class="loading-state">
-                                <div class="loading-spinner">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                </div>
+                                <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>
                                 <div class="loading-text">
-                                    <h3>Loading Assemblies</h3>
-                                    <p>Scanning available assemblies and groups...</p>
+                                    <h3>Scanning Assemblies</h3>
+                                    <p>Loading available assemblies and group files...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="card-footer">
                         <button type="button" class="btn btn-primary" onclick="nextStep()" id="nextStep1" disabled>
                             Next Step <i class="fas fa-arrow-right"></i>
@@ -131,42 +140,36 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Step 2: Group Selection -->
+
+            <!-- STEP 2: Group Selection -->
             <div class="form-section" id="groupSection">
                 <div class="section-card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3><i class="fas fa-users"></i> Group Selection</h3>
-                            <p>Choose the specific groups from CSV files you want to target</p>
+                            <h3><i class="fas fa-users"></i> 2. Choose Group Files</h3>
+                            <p>Filter and select specific WhatsApp group CSV files</p>
                         </div>
                         <div class="card-actions">
-                            <button type="button" class="btn btn-outline" onclick="selectAllGroups()">
-                                <i class="fas fa-check-double"></i> Select All
+                            <button type="button" class="btn btn-outline btn-sm" onclick="selectAllGroups()">
+                                <i class="fas fa-check-double"></i> All
                             </button>
-                            <button type="button" class="btn btn-outline" onclick="deselectAllGroups()">
-                                <i class="fas fa-times"></i> Clear All
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="deselectAllGroups()">
+                                <i class="fas fa-times"></i> Clear
                             </button>
                         </div>
                     </div>
-                    
                     <div class="card-content">
-                        <div class="group-selection">
-                            <div class="group-controls">
-                                <div class="group-info">
-                                    <span id="selectedGroupsCount">0</span> of <span id="totalGroupsCount">0</span> groups selected
-                                </div>
-                                <div class="group-search">
-                                    <input type="text" id="groupSearch" placeholder="Search groups..." onkeyup="filterGroups()">
-                                    <i class="fas fa-search"></i>
-                                </div>
+                        <div class="group-controls">
+                            <div class="group-info">
+                                Selected: <span id="selectedGroupsCount" class="text-success">0</span> / <span id="totalGroupsCount">0</span> groups
                             </div>
-                            <div class="groups-container" id="groupsContainer">
-                                <!-- Groups will be populated here -->
+                            <div class="group-search">
+                                <input type="text" id="groupSearch" placeholder="Search groups..." onkeyup="filterGroups()">
+                                <i class="fas fa-search"></i>
                             </div>
                         </div>
+                        <div class="groups-container" id="groupsContainer"></div>
                     </div>
-                    
                     <div class="card-footer">
                         <button type="button" class="btn btn-secondary" onclick="previousStep()">
                             <i class="fas fa-arrow-left"></i> Previous
@@ -177,130 +180,116 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Step 3: Scheduling Form -->
+
+            <!-- STEP 3: Compose & Schedule -->
             <div class="form-section" id="schedulingSection">
                 <div class="section-card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3><i class="fas fa-calendar-alt"></i> Schedule & Content</h3>
-                            <p>Set the schedule and add your post content</p>
+                            <h3><i class="fas fa-calendar-alt"></i> 3. Compose &amp; Schedule Content</h3>
+                            <p>Set campaign details, compose broadcast text, and attach media files</p>
                         </div>
                     </div>
-                    
                     <div class="card-content">
                         <form id="postScheduleForm" enctype="multipart/form-data">
                             <div class="form-grid">
-                                <!-- Basic Information -->
+
+                                <!-- Broadcast Info -->
                                 <div class="form-card">
                                     <div class="form-card-header">
-                                        <h4><i class="fas fa-info-circle"></i> Basic Information</h4>
+                                        <h4><i class="fas fa-info-circle"></i> Broadcast Information</h4>
                                     </div>
                                     <div class="form-card-content">
                                         <div class="form-row">
-                                            <div class="form-group">
+                                            <div class="form-group" style="grid-column: 1 / -1;">
                                                 <label for="title">Post Title *</label>
-                                                <input type="text" id="title" name="title" required placeholder="Enter post title">
+                                                <input type="text" id="title" name="title" required placeholder="Enter campaign title...">
                                             </div>
                                         </div>
-                                        
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label for="scheduled_date">Date *</label>
+                                                <label for="scheduled_date">Schedule Date *</label>
                                                 <input type="date" id="scheduled_date" name="scheduled_date" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="scheduled_time">Time *</label>
+                                                <label for="scheduled_time">Schedule Time *</label>
                                                 <input type="time" id="scheduled_time" name="scheduled_time" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Message Content -->
+
+                                <!-- Message Text -->
                                 <div class="form-card">
                                     <div class="form-card-header">
-                                        <h4><i class="fas fa-comment"></i> Message Content</h4>
+                                        <h4><i class="fas fa-comment-alt"></i> Message Text</h4>
                                     </div>
                                     <div class="form-card-content">
                                         <div class="form-group">
-                                            <label for="message_text">Message Text</label>
-                                            <textarea id="message_text" name="message_text" rows="4" placeholder="Enter your message text here..."></textarea>
-                                            <div class="char-counter">
-                                                <span id="charCount">0</span> characters
-                                            </div>
+                                            <label for="message_text">Message Content</label>
+                                            <textarea id="message_text" name="message_text" rows="4" placeholder="Type your WhatsApp broadcast message here..."></textarea>
+                                            <div class="char-counter"><span id="charCount">0</span> characters</div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Media Files -->
+
+                                <!-- Media Attachments -->
                                 <div class="form-card">
                                     <div class="form-card-header">
-                                        <h4><i class="fas fa-images"></i> Media Files</h4>
+                                        <h4><i class="fas fa-paperclip"></i> Media Attachments</h4>
                                     </div>
                                     <div class="form-card-content">
                                         <div class="media-upload-grid">
                                             <div class="media-upload-item">
                                                 <label for="image_file">
-                                                    <div class="upload-icon">
-                                                        <i class="fas fa-image"></i>
-                                                    </div>
+                                                    <div class="upload-icon"><i class="fas fa-image"></i></div>
                                                     <span>Image</span>
                                                 </label>
-                                                <input type="file" id="image_file" name="image_file" accept="image/*" onchange="previewMedia('image_file', 'imagePreview')">
-                                                <small>JPG, PNG, GIF (Max: 5MB)</small>
+                                                <input type="file" id="image_file" name="image_file" accept="image/*" onchange="previewMedia('image_file','imagePreview')">
+                                                <small>JPG, PNG, GIF (Max 5MB)</small>
                                             </div>
-                                            
                                             <div class="media-upload-item">
                                                 <label for="audio_file">
-                                                    <div class="upload-icon">
-                                                        <i class="fas fa-music"></i>
-                                                    </div>
+                                                    <div class="upload-icon"><i class="fas fa-music"></i></div>
                                                     <span>Audio</span>
                                                 </label>
-                                                <input type="file" id="audio_file" name="audio_file" accept="audio/*" onchange="previewMedia('audio_file', 'audioPreview')">
-                                                <small>MP3, WAV, M4A (Max: 10MB)</small>
+                                                <input type="file" id="audio_file" name="audio_file" accept="audio/*" onchange="previewMedia('audio_file','audioPreview')">
+                                                <small>MP3, WAV, M4A (Max 10MB)</small>
                                             </div>
-                                            
                                             <div class="media-upload-item">
                                                 <label for="video_file">
-                                                    <div class="upload-icon">
-                                                        <i class="fas fa-video"></i>
-                                                    </div>
+                                                    <div class="upload-icon"><i class="fas fa-video"></i></div>
                                                     <span>Video</span>
                                                 </label>
-                                                <input type="file" id="video_file" name="video_file" accept="video/*" onchange="previewMedia('video_file', 'videoPreview')">
-                                                <small>MP4, AVI, MOV (Max: 50MB)</small>
+                                                <input type="file" id="video_file" name="video_file" accept="video/*" onchange="previewMedia('video_file','videoPreview')">
+                                                <small>MP4, MOV (Max 50MB)</small>
                                             </div>
                                         </div>
-                                        
-                                        <!-- Media Previews -->
+
                                         <div class="media-previews">
-                                            <div class="media-preview" id="imagePreview" style="display: none;">
-                                                <h5><i class="fas fa-image"></i> Image Preview</h5>
+                                            <div class="media-preview" id="imagePreview" style="display:none;">
+                                                <h5><i class="fas fa-image"></i> Image Selected</h5>
                                                 <div class="preview-content">
-                                                    <img id="imagePreviewImg" src="" alt="Image Preview">
-                                                    <button type="button" class="btn btn-sm btn-outline" onclick="removeMedia('image_file', 'imagePreview')">
+                                                    <img id="imagePreviewImg" src="" alt="Preview">
+                                                    <button type="button" class="btn btn-sm btn-secondary" onclick="removeMedia('image_file','imagePreview')">
                                                         <i class="fas fa-times"></i> Remove
                                                     </button>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="media-preview" id="audioPreview" style="display: none;">
-                                                <h5><i class="fas fa-music"></i> Audio Preview</h5>
+                                            <div class="media-preview" id="audioPreview" style="display:none;">
+                                                <h5><i class="fas fa-music"></i> Audio Selected</h5>
                                                 <div class="preview-content">
                                                     <audio id="audioPreviewPlayer" controls></audio>
-                                                    <button type="button" class="btn btn-sm btn-outline" onclick="removeMedia('audio_file', 'audioPreview')">
+                                                    <button type="button" class="btn btn-sm btn-secondary" onclick="removeMedia('audio_file','audioPreview')">
                                                         <i class="fas fa-times"></i> Remove
                                                     </button>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="media-preview" id="videoPreview" style="display: none;">
-                                                <h5><i class="fas fa-video"></i> Video Preview</h5>
+                                            <div class="media-preview" id="videoPreview" style="display:none;">
+                                                <h5><i class="fas fa-video"></i> Video Selected</h5>
                                                 <div class="preview-content">
                                                     <video id="videoPreviewPlayer" controls></video>
-                                                    <button type="button" class="btn btn-sm btn-outline" onclick="removeMedia('video_file', 'videoPreview')">
+                                                    <button type="button" class="btn btn-sm btn-secondary" onclick="removeMedia('video_file','videoPreview')">
                                                         <i class="fas fa-times"></i> Remove
                                                     </button>
                                                 </div>
@@ -308,145 +297,222 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+                        </form>
                     </div>
-                    
                     <div class="card-footer">
                         <button type="button" class="btn btn-secondary" onclick="previousStep()">
                             <i class="fas fa-arrow-left"></i> Previous
                         </button>
-                        <button type="submit" class="btn btn-primary" form="postScheduleForm">
-                            <i class="fas fa-save"></i> Schedule Post
-                        </button>
                         <button type="button" class="btn btn-outline" onclick="resetForm()">
                             <i class="fas fa-undo"></i> Reset
                         </button>
+                        <button type="submit" class="btn btn-primary" form="postScheduleForm">
+                            <i class="fas fa-paper-plane"></i> Schedule Broadcast
+                        </button>
                     </div>
                 </div>
             </div>
-        </form>
-            
-            <!-- Scheduled Posts List -->
-            <div class="scheduled-posts-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-clock"></i> Scheduled Posts</h2>
-                    <p>Manage your scheduled posts and track their status</p>
-                </div>
-                
-                <div class="section-card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h3><i class="fas fa-list"></i> Active Posts</h3>
-                            <p>View and manage all your scheduled posts</p>
-                        </div>
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-outline" onclick="loadScheduledPosts()">
-                                <i class="fas fa-sync-alt"></i> Refresh
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="card-content">
-                        <div class="scheduled-posts-list" id="scheduledPosts">
-                            <div class="loading-state">
-                                <div class="loading-spinner">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                </div>
-                                <div class="loading-text">
-                                    <h3>Loading Scheduled Posts</h3>
-                                    <p>Fetching your scheduled posts...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Success Modal -->
+
+        </div><!-- end #campaignCreationView -->
+
+
+        <!-- ================================================
+             TAB 2: PENDING TASKS VIEW
+             ================================================ -->
+        <div class="tab-view-content" id="pendingTasksView" style="display:none;">
+
+            <!-- Pending Summary Banner -->
+            <div class="pending-summary-banner">
+                <div class="pending-banner-left">
+                    <div class="pending-banner-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="pending-banner-info">
+                        <h3>Pending Broadcast Tasks</h3>
+                        <p>These are scheduled posts awaiting execution. You can review or cancel them before they are sent.</p>
+                    </div>
+                </div>
+                <div class="pending-banner-right">
+                    <div class="pending-count-badge">
+                        <span class="pending-count-number" id="pendingCountBig">0</span>
+                        <span class="pending-count-label">Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Tasks Stats Row -->
+            <div class="pending-stats-row">
+                <div class="pstat-card">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <span class="pstat-val" id="pendingTotalCount">0</span>
+                        <span class="pstat-lbl">Total Pending Posts</span>
+                    </div>
+                </div>
+                <div class="pstat-card">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <span class="pstat-val" id="pendingTotalGroups">0</span>
+                        <span class="pstat-lbl">Groups Queued</span>
+                    </div>
+                </div>
+                <div class="pstat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <span class="pstat-val" id="pendingNextDate">—</span>
+                        <span class="pstat-lbl">Next Scheduled Date</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Posts List -->
+            <div class="section-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3><i class="fas fa-list-ul"></i> All Pending Scheduled Posts</h3>
+                        <p>Review each pending broadcast before it is automatically executed</p>
+                    </div>
+                    <div class="card-actions">
+                        <button type="button" class="btn btn-outline btn-sm" onclick="loadScheduledPosts()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content" style="padding: 0;">
+                    <div id="pendingPostsList">
+                        <div class="loading-state">
+                            <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>
+                            <p>Loading pending tasks...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end #pendingTasksView -->
+
+        <!-- ================================================
+             TAB 3: DAILY TASK REPORTS
+             ================================================ -->
+        <div class="tab-view-content" id="dailyReportsView" style="display:none;">
+
+            <!-- Filter Bar -->
+            <div class="reports-filter-card">
+                <div class="filter-header-title">
+                    <div class="icon-glow"><i class="fas fa-calendar-check"></i></div>
+                    <div>
+                        <h3>Daily Task Execution Reports</h3>
+                        <p>Select a date to view all broadcast execution logs, group deliveries, and message details</p>
+                    </div>
+                </div>
+                <div class="filter-date-picker-box">
+                    <label for="reportDatePicker"><i class="fas fa-filter"></i> Date:</label>
+                    <input type="date" id="reportDatePicker" class="date-picker-input">
+                </div>
+            </div>
+
+            <!-- Daily Metrics Grid -->
+            <div class="daily-metrics-grid">
+                <div class="report-stat-card">
+                    <div class="stat-icon-wrapper groups"><i class="fas fa-users"></i></div>
+                    <div class="stat-data">
+                        <span class="stat-title">Total Groups Messaged</span>
+                        <h3 id="reportTotalGroups">0</h3>
+                        <span class="stat-sub">For selected date</span>
+                    </div>
+                </div>
+                <div class="report-stat-card">
+                    <div class="stat-icon-wrapper messages"><i class="fas fa-paper-plane"></i></div>
+                    <div class="stat-data">
+                        <span class="stat-title">Messages Sent</span>
+                        <h3 id="reportTotalMessages">0</h3>
+                        <span class="stat-sub">Total dispatched messages</span>
+                    </div>
+                </div>
+                <div class="report-stat-card">
+                    <div class="stat-icon-wrapper success"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-data">
+                        <span class="stat-title">Overall Success Rate</span>
+                        <h3 id="reportSuccessRate">—</h3>
+                        <div class="stat-progress-track">
+                            <div class="stat-progress-fill" id="reportProgressFill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Cards -->
+            <div class="daily-reports-container" id="dailyReportsList">
+                <div class="loading-state">
+                    <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>
+                    <p>Loading daily broadcast logs...</p>
+                </div>
+            </div>
+
+        </div><!-- end #dailyReportsView -->
+
+    </div><!-- end .dashboard-content -->
+</div><!-- end .main-content -->
+
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
+
+<!-- Success -->
 <div class="modal" id="successModal">
     <div class="modal-content">
         <div class="modal-header success">
-            <h3><i class="fas fa-check-circle"></i> Success!</h3>
+            <h3><i class="fas fa-check-circle"></i> Success</h3>
         </div>
-        <div class="modal-body">
-            <p id="successMessage"></p>
-        </div>
+        <div class="modal-body"><p id="successMessage"></p></div>
         <div class="modal-footer">
             <button class="btn btn-primary" onclick="closeModal('successModal')">OK</button>
         </div>
     </div>
 </div>
 
-<!-- Error Modal -->
+<!-- Error -->
 <div class="modal" id="errorModal">
     <div class="modal-content">
         <div class="modal-header error">
             <h3><i class="fas fa-exclamation-circle"></i> Error</h3>
         </div>
-        <div class="modal-body">
-            <p id="errorMessage"></p>
-        </div>
+        <div class="modal-body"><p id="errorMessage"></p></div>
         <div class="modal-footer">
             <button class="btn btn-primary" onclick="closeModal('errorModal')">OK</button>
         </div>
     </div>
 </div>
 
-<!-- Loading Modal -->
+<!-- Loading -->
 <div class="modal" id="loadingModal">
-    <div class="modal-content loading-modal">
+    <div class="modal-content">
         <div class="modal-header loading">
             <h3><i class="fas fa-spinner fa-spin"></i> <span id="loadingModalTitle">Processing...</span></h3>
         </div>
-        <div class="modal-body">
-            <div class="loading-content">
-                <div class="loading-spinner-large">
-                    <i class="fas fa-spinner fa-spin"></i>
-                </div>
-                <p id="loadingModalMessage">Please wait while we process your request...</p>
-                <div class="loading-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="modal-body"><p id="loadingModalMessage">Please wait...</p></div>
     </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
+<!-- Delete Confirm -->
 <div class="modal" id="deleteConfirmModal">
     <div class="modal-content">
-        <div class="modal-header">
-            <h3><i class="fas fa-exclamation-triangle"></i> Confirm Post Deletion</h3>
+        <div class="modal-header error">
+            <h3><i class="fas fa-exclamation-triangle"></i> Confirm Deletion</h3>
         </div>
         <div class="modal-body">
-            <div class="alert alert-danger">
-                <i class="fas fa-exclamation-triangle"></i>
-                <strong>Warning:</strong> This action cannot be undone!
-            </div>
-            <p>Are you sure you want to delete the post "<strong id="deletePostTitle"></strong>"?</p>
-            <p>This will permanently remove:</p>
-            <ul>
-                <li>The scheduled post</li>
-                <li>All associated target groups</li>
-                <li>Any uploaded media files</li>
-                <li>All related data</li>
-            </ul>
-            <p><strong>This action is irreversible!</strong></p>
+            <p>Delete post "<strong id="deletePostTitle"></strong>"? This will cancel all scheduled broadcasts.</p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" onclick="closeModal('deleteConfirmModal')">Cancel</button>
             <button class="btn btn-danger" onclick="deletePost()">
-                <i class="fas fa-trash"></i> Delete Post
+                <i class="fas fa-trash"></i> Delete
             </button>
         </div>
     </div>
 </div>
 
-<!-- Include JavaScript -->
 <script src="{{ url_for('static', filename='js/post_scheduling.js') }}"></script>
 {% endblock %}
